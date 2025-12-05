@@ -50,7 +50,7 @@ const NavBar = () => {
         </div>
 
         <div className="flex items-center gap-2 ml-2">
-          <div className="w-10 h-10">
+          <div className="w-10 h-10 flex items-center">
             <Logo />
           </div>
           <h2 className="text-xl font-bold">
@@ -65,7 +65,7 @@ const NavBar = () => {
       </div>
 
       <div className="navbar-end">
-        <Link className="btn" to="/login">
+        <Link className="btn btn-secondary" to="/login">
           Log In
         </Link>
 
