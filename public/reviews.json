@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "James Smith",
+    "role": "Donor",
+    "avatar": "https://randomuser.me/api/portraits/men/32.jpg",
+    "comment": "The BloodConnect app made it super easy for me to find donation requests nearby. The dashboard is clean and very user-friendly.",
+    "rating": 5
+  },
+  {
+    "id": 2,
+    "name": "Emma Johnson",
+    "role": "Volunteer",
+    "avatar": "https://randomuser.me/api/portraits/women/44.jpg",
+    "comment": "I love how efficiently I can manage donation requests as a volunteer. The recent requests section saves a lot of time.",
+    "rating": 4.5
+  },
+  {
+    "id": 3,
+    "name": "Liam Williams",
+    "role": "Admin",
+    "avatar": "https://randomuser.me/api/portraits/men/56.jpg",
+    "comment": "Managing donors and requests has never been easier. The role-based permissions are perfectly implemented.",
+    "rating": 5
+  },
+  {
+    "id": 4,
+    "name": "Olivia Brown",
+    "role": "Donor",
+    "avatar": "https://randomuser.me/api/portraits/women/68.jpg",
+    "comment": "The search functionality for donors is amazing. I could quickly find a donor in my district and schedule a donation.",
+    "rating": 4
+  },
+  {
+    "id": 5,
+    "name": "Noah Miller",
+    "role": "Volunteer",
+    "avatar": "https://randomuser.me/api/portraits/men/12.jpg",
+    "comment": "I appreciate the clarity and responsiveness of the app. Creating donation requests and tracking them is seamless.",
+    "rating": 4.5
+  },
+  {
+    "id": 6,
+    "name": "Charlotte Davis",
+    "role": "Donor",
+    "avatar": "https://randomuser.me/api/portraits/women/21.jpg",
+    "comment": "The profile update system is intuitive, and I feel in control of my donation history. Excellent platform!",
+    "rating": 5
+  }
+]

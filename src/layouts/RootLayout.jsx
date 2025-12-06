@@ -5,7 +5,7 @@ import Navbar from "../pages/Shared/Navbar/Navbar";
 
 const RootLayout = () => {
   return (
-    <div>
+    <div className="bg-base-50">
       <Navbar></Navbar>
       <Outlet></Outlet>
       <Footer></Footer>
