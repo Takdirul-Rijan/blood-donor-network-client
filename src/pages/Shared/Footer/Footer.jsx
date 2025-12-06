@@ -1,52 +1,93 @@
-import { Link } from "react-router";
+import React from "react";
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-gray-300 py-8 mt-10">
-      <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8">
+    <footer className="w-11/12 mx-auto bg-red-600 text-white rounded-t-3xl mt-16 px-6 py-10">
+      <div className="grid md:grid-cols-4 gap-8">
         <div>
-          <h2 className="text-2xl font-semibold text-red-500">BloodConnect</h2>
-          <p className="text-sm mt-2">
-            A platform connecting life-saving donors with patients in need.
+          <h2 className="text-xl font-bold mb-4">BloodConnect</h2>
+          <p className="text-white/90 leading-relaxed">
+            Our mission is to connect donors with those in need, save lives, and
+            build a trusted blood donation community.
           </p>
         </div>
 
         <div>
-          <h3 className="text-lg font-medium text-white mb-3">Quick Links</h3>
-          <ul className="space-y-2 text-sm">
+          <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+          <ul className="space-y-2">
             <li>
-              <Link to="/" className="hover:text-red-400">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/donation-requests" className="hover:text-red-400">
+              <a href="/donation-requests" className="hover:text-red-200">
                 Donation Requests
-              </Link>
+              </a>
             </li>
             <li>
-              <Link to="/search" className="hover:text-red-400">
+              <a href="/search" className="hover:text-red-200">
                 Search Donors
-              </Link>
+              </a>
             </li>
             <li>
-              <Link to="/contact" className="hover:text-red-400">
+              <a href="/about" className="hover:text-red-200">
+                About Us
+              </a>
+            </li>
+            <li>
+              <a href="/contact" className="hover:text-red-200">
                 Contact
-              </Link>
+              </a>
             </li>
           </ul>
         </div>
 
         <div>
-          <h3 className="text-lg font-medium text-white mb-3">Contact Us</h3>
-          <p className="text-sm">📞 +880 1234 567 890</p>
-          <p className="text-sm">📧 support@bloodcare.com</p>
-          <p className="text-sm mt-2">Dhaka, Bangladesh</p>
+          <h3 className="text-lg font-semibold mb-4">Contact</h3>
+          <p className="mb-2">📞 +880 1300 000000</p>
+          <p className="mb-2">📧 support@bloodnetwork.com</p>
+          <p>📍 Dhaka, Bangladesh</p>
+        </div>
+
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
+          <div className="flex gap-4 text-xl">
+            <a
+              href="https://www.facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-red-200"
+            >
+              <FaFacebookF />
+            </a>
+            <a
+              href="https://www.instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-red-200"
+            >
+              <FaInstagram />
+            </a>
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-red-200"
+            >
+              <FaXTwitter />
+            </a>
+            <a
+              href="https://www.linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-red-200"
+            >
+              <FaLinkedinIn />
+            </a>
+          </div>
         </div>
       </div>
 
-      <div className="border-t border-gray-700 mt-8 pt-4 text-center text-sm">
-        © {new Date().getFullYear()} BloodConnect. All rights reserved.
+      <div className="mt-10 border-t border-red-500 pt-4 text-center text-white/80 text-sm">
+        &copy; {new Date().getFullYear()} BloodConnect. All rights reserved.
       </div>
     </footer>
   );

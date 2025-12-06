@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 
 const Banner = () => {
   return (
-    <section className="w-11/12 mx-auto py-10">
-      <div className="grid md:grid-cols-2 items-center gap-10 bg-gradient-to-r from-red-600 to-red-500 rounded-3xl p-10 shadow-xl">
+    <section className="w-11/12 mx-auto py-8">
+      <div className="grid md:grid-cols-2 items-center gap-10 bg-gradient-to-r from-red-600 to-red-500 rounded-3xl p-6 shadow-xl">
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
@@ -31,7 +31,7 @@ const Banner = () => {
           </motion.p>
 
           <motion.div
-            className="mt-8 flex flex-col sm:flex-row gap-4"
+            className="mt-6 flex flex-col sm:flex-row gap-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
@@ -63,7 +63,7 @@ const Banner = () => {
           <motion.img
             src="https://cdn-icons-png.flaticon.com/512/2966/2966327.png"
             alt="Blood Donation Illustration"
-            className="w-72 md:w-96 drop-shadow-xl"
+            className="w-64 md:w-80 drop-shadow-xl"
             whileHover={{ scale: 1.05, rotate: 2 }}
             transition={{ type: "spring", stiffness: 150 }}
           />

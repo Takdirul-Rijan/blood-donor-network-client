@@ -50,7 +50,7 @@ const NavBar = () => {
         </div>
 
         <div className="flex items-center gap-2 ml-2">
-          <div className="w-10 h-10 flex items-center">
+          <div className="w-10 h-10 flex items-center bg-neutral">
             <Logo />
           </div>
           <h2 className="text-xl font-bold">
