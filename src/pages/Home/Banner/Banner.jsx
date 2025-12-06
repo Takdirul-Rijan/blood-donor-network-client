@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const Banner = () => {
   return (
     <section className="w-11/12 mx-auto py-8">
-      <div className="grid md:grid-cols-2 items-center gap-10 bg-gradient-to-r from-red-600 to-red-500 rounded-3xl p-6 shadow-xl">
+      <div className="grid md:grid-cols-2 items-center gap-10 bg-gradient-to-r from-red-600 to-red-500 p-6 shadow-xl">
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}

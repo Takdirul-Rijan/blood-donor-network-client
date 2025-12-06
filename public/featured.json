@@ -1,0 +1,17 @@
+[
+  {
+    "icon": "HeartPulse",
+    "title": "Why Donate?",
+    "desc": "One donation can save up to three lives. Your contribution makes a real impact."
+  },
+  {
+    "icon": "Users",
+    "title": "Trusted Donor Network",
+    "desc": "A verified community of active donors and volunteers ready to help."
+  },
+  {
+    "icon": "MapPin",
+    "title": "Find Nearby Donors",
+    "desc": "Search donors by blood group, district, and upazila instantly."
+  }
+]

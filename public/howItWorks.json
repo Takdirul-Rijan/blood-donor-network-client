@@ -1,0 +1,27 @@
+[
+  {
+    "icon": "UserCheck",
+    "title": "Register as a Donor",
+    "desc": "Create your account by filling in your details including blood group, location, and contact information."
+  },
+  {
+    "icon": "MapPin",
+    "title": "Search or Receive Requests",
+    "desc": "Find donors near you or view blood requests created by recipients and volunteers."
+  },
+  {
+    "icon": "Calendar",
+    "title": "Schedule Donation",
+    "desc": "Choose a convenient date, time, and location to donate blood. Confirm your availability."
+  },
+  {
+    "icon": "Heart",
+    "title": "Donate & Save Lives",
+    "desc": "Visit the hospital or donation center and complete your donation to help those in need."
+  },
+  {
+    "icon": "Users",
+    "title": "Track Your Impact",
+    "desc": "Keep track of your donations, view your contribution stats, and help build a healthier community."
+  }
+]

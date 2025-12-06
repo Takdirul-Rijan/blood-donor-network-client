@@ -10,7 +10,7 @@ const Reviews = ({ reviewsPromise }) => {
   //   console.log(reviews);
 
   return (
-    <div className="w-11/12 mx-auto py-10 px-3 bg-red-50 rounded-2xl -mt-8">
+    <div className="w-11/12 mx-auto py-10 px-3 bg-red-50 -mt-8">
       <div className="text-center mb-16">
         <h3 className="text-3xl font-bold my-4">What Our Users Say</h3>
         <p className="text-gray-600 max-w-2xl mx-auto">

@@ -4,7 +4,7 @@ import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <footer className="w-11/12 mx-auto bg-red-600 text-white rounded-t-3xl mt-16 px-6 py-10">
+    <footer className="w-11/12 mx-auto bg-red-600 text-white mt-16 px-6 py-10">
       <div className="grid md:grid-cols-4 gap-8">
         <div>
           <h2 className="text-xl font-bold mb-4">BloodConnect</h2>
