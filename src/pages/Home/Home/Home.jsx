@@ -3,6 +3,7 @@ import Reviews from "../Reviews/Reviews";
 import HowItWorks from "../HowItWorks/HowItWorks";
 import Featured from "../Featured/Featured";
 import Banner from "../Banner/Banner";
+import ContactSection from "../ContactSection/ContactSection";
 
 const reviewsPromise = fetch("/reviews.json").then((res) => res.json());
 const stepsPromise = fetch("/howItWorks.json").then((res) => res.json());
@@ -15,6 +16,7 @@ const Home = () => {
       <Featured featuresPromise={featuresPromise}></Featured>
       <HowItWorks stepsPromise={stepsPromise}></HowItWorks>
       <Reviews reviewsPromise={reviewsPromise}></Reviews>
+      <ContactSection></ContactSection>
     </div>
   );
 };

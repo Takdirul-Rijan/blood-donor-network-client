@@ -16,7 +16,7 @@ const HowItWorks = ({ stepsPromise }) => {
         transition={{ duration: 0.6 }}
         className="text-3xl md:text-4xl font-bold text-center mb-8"
       >
-        How It Works
+        Donation Process
       </motion.h2>
 
       <div className="grid md:grid-cols-5 gap-8">
