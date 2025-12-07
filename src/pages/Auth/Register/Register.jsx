@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useLoaderData, useLocation } from "react-router";
+import { Link, useLoaderData, useLocation, useNavigate } from "react-router";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Logo from "../../../components/Logo/Logo";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const Register = () => {
   const loaderData = useLoaderData();
   const districtsData = Array.isArray(loaderData) ? loaderData : [];
   const location = useLocation();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -18,23 +20,42 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
-  const { registerUser } = useAuth();
+  const { registerUser, updateUserProfile } = useAuth();
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [upazilas, setUpazilas] = useState([]);
 
   const handleRegistration = (data) => {
+    const profileImg = data.avatar[0];
+
     registerUser(data.email, data.password)
       .then((result) => {
-        Swal.fire({
-          title: "Registration Successful!",
-          text: "Welcome to the BloodConnect donor community!",
-          icon: "success",
-          confirmButtonText: "Continue",
-          confirmButtonColor: "#d32f2f",
-        });
-        // console.log(result.user);
+        const formData = new FormData();
+        formData.append("image", profileImg);
+
+        const image_API_Url = `https://api.imgbb.com/1/upload?key=${
+          import.meta.env.VITE_image_host_key
+        }`;
+
+        axios
+          .post(image_API_Url, formData)
+          .then((res) => {
+            // console.log("after image upload", res.data.data.url);
+
+            const userProfile = {
+              displayName: data.name,
+              photoURL: res.data.data.url,
+            };
+
+            updateUserProfile(userProfile)
+              .then(() => {
+                // console.log("user profile updated done.");
+                navigate(location.state || "/");
+              })
+              .catch((error) => console.log(error));
+          })
+          .catch((error) => console.log(error));
       })
       .catch((error) => {
         Swal.fire({
@@ -44,6 +65,15 @@ const Register = () => {
           confirmButtonColor: "#d32f2f",
         });
       });
+
+    Swal.fire({
+      title: "Registration Successful!",
+      text: "Welcome to the BloodConnect donor community!",
+      icon: "success",
+      confirmButtonText: "Continue",
+      confirmButtonColor: "#d32f2f",
+    });
+    // console.log(result.user);
   };
 
   const handleDistrictChange = (e) => {

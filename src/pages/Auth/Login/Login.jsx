@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useLocation } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Logo from "../../../components/Logo/Logo";
 import useAuth from "../../../hooks/useAuth";
@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 
 const Login = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -29,6 +30,7 @@ const Login = () => {
           timer: 2500,
           showConfirmButton: false,
         });
+        navigate(location.state || "/");
       })
       .catch(() => {
         Swal.fire({

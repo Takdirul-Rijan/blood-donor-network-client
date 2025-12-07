@@ -1,9 +1,12 @@
 import React from "react";
 import logo from "../../assets/logo-b.png";
+import { Link } from "react-router";
 const Logo = () => {
   return (
     <div>
-      <img src={logo} alt="" />
+      <Link to={"/"}>
+        <img src={logo} alt="" />
+      </Link>
     </div>
   );
 };

@@ -1,8 +1,28 @@
 import React from "react";
 import { Link, NavLink } from "react-router";
 import Logo from "../../../components/Logo/Logo";
+import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const NavBar = () => {
+  const { user, logOut } = useAuth();
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Logged Out!",
+          text: "You have successfully logged out.",
+          timer: 2500,
+          showConfirmButton: false,
+        });
+      })
+      .catch((error) => {
+        // console.log(error);
+      });
+  };
+
   const links = (
     <>
       <li>
@@ -19,12 +39,6 @@ const NavBar = () => {
       </li>
       <li>
         <NavLink to="/contact">Contact</NavLink>
-      </li>
-      <li>
-        <NavLink to="/login">Log In</NavLink>
-      </li>
-      <li>
-        <NavLink to="/register">Join as Donor</NavLink>
       </li>
     </>
   );
@@ -73,12 +87,18 @@ const NavBar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
 
-      <div className="navbar-end hidden lg:flex">
-        <Link className="btn btn-secondary" to="/login">
-          Log In
-        </Link>
+      <div className="navbar-end flex flex-col md:flex-row items-center gap-2 md:gap-4">
+        {user ? (
+          <a onClick={handleLogOut} className="btn btn-secondary w-32">
+            Log Out
+          </a>
+        ) : (
+          <Link className="btn btn-secondary w-32" to="/login">
+            Log In
+          </Link>
+        )}
 
-        <Link className="btn btn-primary mx-4" to="/register">
+        <Link className="btn btn-primary w-32" to="/register">
           Join as Donor
         </Link>
       </div>
