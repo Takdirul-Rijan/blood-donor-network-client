@@ -27,7 +27,7 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         Component: Register,
-        loader: () => fetch("/public/districtsUpazilas.json"),
+        loader: () => fetch("/districtsUpazilas.json"),
       },
     ],
   },

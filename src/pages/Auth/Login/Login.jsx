@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation } from "react-router";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Logo from "../../../components/Logo/Logo";
+import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const location = useLocation();
@@ -13,10 +15,28 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
+  const { signInUser } = useAuth();
+
   const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = (data) => {
-    console.log("Login submitted:", data);
+    signInUser(data.email, data.password)
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Login Successful!",
+          text: "Welcome back to BloodConnect.",
+          timer: 2500,
+          showConfirmButton: false,
+        });
+      })
+      .catch(() => {
+        Swal.fire({
+          icon: "error",
+          title: "Login Failed",
+          text: "Invalid email or password. Please try again.",
+        });
+      });
   };
 
   return (

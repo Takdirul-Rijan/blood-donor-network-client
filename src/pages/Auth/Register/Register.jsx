@@ -3,10 +3,14 @@ import { useForm } from "react-hook-form";
 import { Link, useLoaderData, useLocation } from "react-router";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Logo from "../../../components/Logo/Logo";
+import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Register = () => {
-  const districtsData = useLoaderData();
+  const loaderData = useLoaderData();
+  const districtsData = Array.isArray(loaderData) ? loaderData : [];
   const location = useLocation();
+
   const {
     register,
     handleSubmit,
@@ -14,12 +18,32 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
+  const { registerUser } = useAuth();
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [upazilas, setUpazilas] = useState([]);
 
   const handleRegistration = (data) => {
-    // console.log("Registration submitted:", data);
+    registerUser(data.email, data.password)
+      .then((result) => {
+        Swal.fire({
+          title: "Registration Successful!",
+          text: "Welcome to the BloodConnect donor community!",
+          icon: "success",
+          confirmButtonText: "Continue",
+          confirmButtonColor: "#d32f2f",
+        });
+        // console.log(result.user);
+      })
+      .catch((error) => {
+        Swal.fire({
+          title: "Registration Failed",
+          text: error.message,
+          icon: "error",
+          confirmButtonColor: "#d32f2f",
+        });
+      });
   };
 
   const handleDistrictChange = (e) => {
@@ -27,7 +51,9 @@ const Register = () => {
     const districtObj = districtsData.find(
       (d) => d.district === selectedDistrict
     );
-    setUpazilas(districtObj ? districtObj.upazilas : []);
+    setUpazilas(
+      Array.isArray(districtObj?.upazilas) ? districtObj.upazilas : []
+    );
   };
 
   const passwordValue = watch("password");
@@ -36,10 +62,11 @@ const Register = () => {
     <div className="w-full flex flex-col items-center mt-10 mb-8">
       <div className="card bg-base-100 w-full max-w-md shadow-xl px-6 py-8 border border-gray-100">
         <div className="flex justify-center mb-3">
-          <div className="h-14 w-16">
+          <div className="h-14 w-16 flex items-center justify-center">
             <Logo />
           </div>
         </div>
+
         <h3 className="text-2xl font-semibold text-center text-red-600 mt-5 mb-1">
           Create Your BloodConnect Account
         </h3>
@@ -95,14 +122,11 @@ const Register = () => {
               className="select select-bordered w-full"
             >
               <option value="">Select blood group</option>
-              <option>A+</option>
-              <option>A-</option>
-              <option>B+</option>
-              <option>B-</option>
-              <option>AB+</option>
-              <option>AB-</option>
-              <option>O+</option>
-              <option>O-</option>
+              {["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"].map((bg) => (
+                <option key={bg} value={bg}>
+                  {bg}
+                </option>
+              ))}
             </select>
             {errors.bloodGroup && (
               <p className="text-red-500 text-sm">
