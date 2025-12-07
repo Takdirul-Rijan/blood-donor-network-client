@@ -1,0 +1,771 @@
+[
+  {
+    "district": "Dhaka",
+    "upazilas": [
+      "Dhamrai",
+      "Dohar",
+      "Keraniganj",
+      "Nawabganj",
+      "Savar",
+      "Tejgaon",
+      "Kotwali",
+      "Uttara",
+      "Mirpur",
+      "Rampura"
+    ]
+  },
+  {
+    "district": "Faridpur",
+    "upazilas": [
+      "Alfadanga",
+      "Bhanga",
+      "Boalmari",
+      "Charbhadrasan",
+      "Faridpur Sadar",
+      "Madhukhali",
+      "Nagarkanda",
+      "Sadarpur",
+      "Saltha"
+    ]
+  },
+  {
+    "district": "Gazipur",
+    "upazilas": ["Gazipur Sadar", "Kaliakair", "Kaliganj", "Kapasia", "Sreepur"]
+  },
+  {
+    "district": "Gopalganj",
+    "upazilas": [
+      "Gopalganj Sadar",
+      "Kashiani",
+      "Kotalipara",
+      "Muksudpur",
+      "Tungipara"
+    ]
+  },
+  {
+    "district": "Kishoreganj",
+    "upazilas": [
+      "Austagram",
+      "Bajitpur",
+      "Bhairab",
+      "Hossainpur",
+      "Itna",
+      "Karimganj",
+      "Katiadi",
+      "Kishoreganj Sadar",
+      "Kuliarchar",
+      "Mithamain",
+      "Nikli",
+      "Pakundia",
+      "Tarail"
+    ]
+  },
+  {
+    "district": "Madaripur",
+    "upazilas": ["Madaripur Sadar", "Kalkini", "Rajoir", "Shibchar"]
+  },
+  {
+    "district": "Manikganj",
+    "upazilas": [
+      "Daulatpur",
+      "Ghior",
+      "Harirampur",
+      "Manikganj Sadar",
+      "Saturia",
+      "Shivalaya",
+      "Singair"
+    ]
+  },
+  {
+    "district": "Munshiganj",
+    "upazilas": [
+      "Gazaria",
+      "Lohajang",
+      "Munshiganj Sadar",
+      "Sirajdikhan",
+      "Sreenagar",
+      "Tongibari"
+    ]
+  },
+  {
+    "district": "Narayanganj",
+    "upazilas": [
+      "Araihazar",
+      "Bandar",
+      "Narayanganj Sadar",
+      "Rupganj",
+      "Sonargaon"
+    ]
+  },
+  {
+    "district": "Narsingdi",
+    "upazilas": [
+      "Belabo",
+      "Monohardi",
+      "Narsingdi Sadar",
+      "Palash",
+      "Raipura",
+      "Shibpur"
+    ]
+  },
+  {
+    "district": "Rajbari",
+    "upazilas": [
+      "Baliakandi",
+      "Goalanda",
+      "Kalukhali",
+      "Pangsha",
+      "Rajbari Sadar"
+    ]
+  },
+  {
+    "district": "Shariatpur",
+    "upazilas": [
+      "Bhedarganj",
+      "Damudya",
+      "Gosairhat",
+      "Jajira",
+      "Naria",
+      "Shariatpur Sadar"
+    ]
+  },
+  {
+    "district": "Tangail",
+    "upazilas": [
+      "Basail",
+      "Bhuapur",
+      "Delduar",
+      "Dhanbari",
+      "Ghatail",
+      "Gopalpur",
+      "Kalihati",
+      "Madhupur",
+      "Mirzapur",
+      "Nagarpur",
+      "Sakhipur",
+      "Tangail Sadar"
+    ]
+  },
+
+  {
+    "district": "Chattogram",
+    "upazilas": [
+      "Anwara",
+      "Banshkhali",
+      "Boalkhali",
+      "Chandanaish",
+      "Fatikchhari",
+      "Hathazari",
+      "Lohagara",
+      "Mirsharai",
+      "Patiya",
+      "Rangunia",
+      "Raozan",
+      "Sandwip",
+      "Satkania",
+      "Sitakunda"
+    ]
+  },
+  {
+    "district": "Bandarban",
+    "upazilas": [
+      "Ali Kadam",
+      "Bandarban Sadar",
+      "Lama",
+      "Naikhongchhari",
+      "Rowangchhari",
+      "Ruma",
+      "Thanchi"
+    ]
+  },
+  {
+    "district": "Brahmanbaria",
+    "upazilas": [
+      "Akhaura",
+      "Ashuganj",
+      "Bancharampur",
+      "Bijoynagar",
+      "Brahmanbaria Sadar",
+      "Kasba",
+      "Nabinagar",
+      "Nasirnagar",
+      "Sarail"
+    ]
+  },
+  {
+    "district": "Chandpur",
+    "upazilas": [
+      "Chandpur Sadar",
+      "Faridganj",
+      "Haimchar",
+      "Haziganj",
+      "Kachua",
+      "Matlab Dakshin",
+      "Matlab Uttar",
+      "Shahrasti"
+    ]
+  },
+  {
+    "district": "Cumilla",
+    "upazilas": [
+      "Barura",
+      "Brahmanpara",
+      "Burichang",
+      "Chandina",
+      "Chauddagram",
+      "Cumilla Sadar",
+      "Daudkandi",
+      "Debidwar",
+      "Homna",
+      "Laksam",
+      "Lalmai",
+      "Meghna",
+      "Monohargonj",
+      "Muradnagar",
+      "Nangalkot",
+      "Titas"
+    ]
+  },
+  {
+    "district": "Cox's Bazar",
+    "upazilas": [
+      "Chakaria",
+      "Cox's Bazar Sadar",
+      "Kutubdia",
+      "Maheshkhali",
+      "Pekua",
+      "Ramu",
+      "Teknaf",
+      "Ukhia"
+    ]
+  },
+  {
+    "district": "Feni",
+    "upazilas": [
+      "Chhagalnaiya",
+      "Daganbhuiyan",
+      "Feni Sadar",
+      "Parshuram",
+      "Sonagazi",
+      "Fulgazi"
+    ]
+  },
+  {
+    "district": "Khagrachari",
+    "upazilas": [
+      "Dighinala",
+      "Khagrachhari Sadar",
+      "Laxmichhari",
+      "Mahalchhari",
+      "Manikchhari",
+      "Matiranga",
+      "Panchhari",
+      "Ramgarh"
+    ]
+  },
+  {
+    "district": "Lakshmipur",
+    "upazilas": [
+      "Kamalnagar",
+      "Lakshmipur Sadar",
+      "Ramganj",
+      "Ramgati",
+      "Raipur"
+    ]
+  },
+  {
+    "district": "Noakhali",
+    "upazilas": [
+      "Begumganj",
+      "Chatkhil",
+      "Companiganj",
+      "Hatiya",
+      "Kabirhat",
+      "Noakhali Sadar",
+      "Senbagh",
+      "Sonaimuri",
+      "Subarnachar"
+    ]
+  },
+  {
+    "district": "Rangamati",
+    "upazilas": [
+      "Baghaichhari",
+      "Barkal",
+      "Kaptai",
+      "Juraichhari",
+      "Langadu",
+      "Naniarchar",
+      "Rajasthali",
+      "Rangamati Sadar"
+    ]
+  },
+
+  {
+    "district": "Bogura",
+    "upazilas": [
+      "Adamdighi",
+      "Bogura Sadar",
+      "Dhunat",
+      "Dupchanchia",
+      "Gabtali",
+      "Kahaloo",
+      "Nandigram",
+      "Sariakandi",
+      "Shajahanpur",
+      "Sherpur",
+      "Shibganj",
+      "Sonatala"
+    ]
+  },
+  {
+    "district": "Chapainawabganj",
+    "upazilas": [
+      "Bholahat",
+      "Gomastapur",
+      "Nachole",
+      "Nawabganj Sadar",
+      "Shibganj"
+    ]
+  },
+  {
+    "district": "Joypurhat",
+    "upazilas": ["Akkelpur", "Joypurhat Sadar", "Kalai", "Khetlal", "Panchbibi"]
+  },
+  {
+    "district": "Naogaon",
+    "upazilas": [
+      "Atrai",
+      "Badalgachhi",
+      "Dhamoirhat",
+      "Manda",
+      "Mohadevpur",
+      "Naogaon Sadar",
+      "Niamatpur",
+      "Patnitala",
+      "Porsha",
+      "Raninagar",
+      "Sapahar"
+    ]
+  },
+  {
+    "district": "Natore",
+    "upazilas": [
+      "Bagatipara",
+      "Baraigram",
+      "Gurudaspur",
+      "Lalpur",
+      "Natore Sadar",
+      "Singra"
+    ]
+  },
+  {
+    "district": "Pabna",
+    "upazilas": [
+      "Atgharia",
+      "Bera",
+      "Bhangura",
+      "Chatmohar",
+      "Faridpur",
+      "Ishwardi",
+      "Pabna Sadar",
+      "Santhia",
+      "Sujanagar"
+    ]
+  },
+  {
+    "district": "Rajshahi",
+    "upazilas": [
+      "Bagha",
+      "Bagmara",
+      "Charghat",
+      "Durgapur",
+      "Godagari",
+      "Mohanpur",
+      "Paba",
+      "Puthia",
+      "Tanore"
+    ]
+  },
+  {
+    "district": "Sirajganj",
+    "upazilas": [
+      "Belkuchi",
+      "Chauhali",
+      "Kamarkhanda",
+      "Kazipur",
+      "Raiganj",
+      "Shahjadpur",
+      "Sirajganj Sadar",
+      "Tarash",
+      "Ullahpara"
+    ]
+  },
+
+  {
+    "district": "Bagerhat",
+    "upazilas": [
+      "Bagerhat Sadar",
+      "Chitalmari",
+      "Fakirhat",
+      "Kachua",
+      "Mollahat",
+      "Mongla",
+      "Morrelganj",
+      "Rampal",
+      "Sarankhola"
+    ]
+  },
+  {
+    "district": "Chuadanga",
+    "upazilas": ["Alamdanga", "Chuadanga Sadar", "Damurhuda", "Jibannagar"]
+  },
+  {
+    "district": "Jashore",
+    "upazilas": [
+      "Abhaynagar",
+      "Bagherpara",
+      "Chaugachha",
+      "Jashore Sadar",
+      "Jhikargachha",
+      "Keshabpur",
+      "Manirampur",
+      "Sharsha"
+    ]
+  },
+  {
+    "district": "Jhenaidah",
+    "upazilas": [
+      "Harinakundu",
+      "Jhenaidah Sadar",
+      "Kaliganj",
+      "Kotchandpur",
+      "Maheshpur",
+      "Shailkupa"
+    ]
+  },
+  {
+    "district": "Khulna",
+    "upazilas": [
+      "Batiaghata",
+      "Dacope",
+      "Dighalia",
+      "Dumuria",
+      "Koyra",
+      "Paikgachha",
+      "Phultala",
+      "Rupsha",
+      "Terokhada"
+    ]
+  },
+  {
+    "district": "Kushtia",
+    "upazilas": [
+      "Bheramara",
+      "Daulatpur",
+      "Khoksa",
+      "Kumarkhali",
+      "Kushtia Sadar",
+      "Mirpur"
+    ]
+  },
+  {
+    "district": "Magura",
+    "upazilas": ["Magura Sadar", "Mohammadpur", "Shalikha", "Sreepur"]
+  },
+  {
+    "district": "Meherpur",
+    "upazilas": ["Gangni", "Meherpur Sadar", "Mujibnagar"]
+  },
+  {
+    "district": "Narail",
+    "upazilas": ["Kalia", "Lohagara", "Narail Sadar"]
+  },
+  {
+    "district": "Satkhira",
+    "upazilas": [
+      "Assasuni",
+      "Debhata",
+      "Kalaroa",
+      "Kaliganj",
+      "Satkhira Sadar",
+      "Shyamnagar",
+      "Tala"
+    ]
+  },
+
+  {
+    "district": "Barishal",
+    "upazilas": [
+      "Agailjhara",
+      "Babuganj",
+      "Bakerganj",
+      "Banaripara",
+      "Gaurnadi",
+      "Hizla",
+      "Mehendiganj",
+      "Muladi",
+      "Wazirpur"
+    ]
+  },
+  {
+    "district": "Bhola",
+    "upazilas": [
+      "Bhola Sadar",
+      "Burhanuddin",
+      "Char Fasson",
+      "Daulatkhan",
+      "Lalmohan",
+      "Manpura",
+      "Tazumuddin"
+    ]
+  },
+  {
+    "district": "Jhalokathi",
+    "upazilas": ["Jhalokathi Sadar", "Kathalia", "Nalchity", "Rajapur"]
+  },
+  {
+    "district": "Patuakhali",
+    "upazilas": [
+      "Bauphal",
+      "Dashmina",
+      "Dumki",
+      "Galachipa",
+      "Kalapara",
+      "Mirzaganj",
+      "Patuakhali Sadar",
+      "Rangabali"
+    ]
+  },
+  {
+    "district": "Pirojpur",
+    "upazilas": [
+      "Bhandaria",
+      "Kawkhali",
+      "Mathbaria",
+      "Nazirpur",
+      "Nesarabad",
+      "Pirojpur Sadar",
+      "Indurkani"
+    ]
+  },
+  {
+    "district": "Barguna",
+    "upazilas": [
+      "Amtali",
+      "Bamna",
+      "Betagi",
+      "Barguna Sadar",
+      "Patharghata",
+      "Taltali"
+    ]
+  },
+
+  {
+    "district": "Habiganj",
+    "upazilas": [
+      "Ajmiriganj",
+      "Bahubal",
+      "Baniachang",
+      "Chunarughat",
+      "Habiganj Sadar",
+      "Lakhai",
+      "Madhabpur",
+      "Nabiganj",
+      "Shaistaganj"
+    ]
+  },
+  {
+    "district": "Moulvibazar",
+    "upazilas": [
+      "Barlekha",
+      "Juri",
+      "Kamalganj",
+      "Kulaura",
+      "Moulvibazar Sadar",
+      "Rajnagar",
+      "Sreemangal"
+    ]
+  },
+  {
+    "district": "Sunamganj",
+    "upazilas": [
+      "Bishwamvarpur",
+      "Chhatak",
+      "Derai",
+      "Dharampasha",
+      "Dowarabazar",
+      "Jagannathpur",
+      "Jamalganj",
+      "Sulla",
+      "Sunamganj Sadar",
+      "Tahirpur",
+      "Shantiganj",
+      "Madhyanagar"
+    ]
+  },
+  {
+    "district": "Sylhet",
+    "upazilas": [
+      "Balaganj",
+      "Beanibazar",
+      "Bishwanath",
+      "Companiganj",
+      "Dakshin Surma",
+      "Fenchuganj",
+      "Golapganj",
+      "Gowainghat",
+      "Jaintiapur",
+      "Kanaighat",
+      "Sylhet Sadar",
+      "Zakiganj"
+    ]
+  },
+
+  {
+    "district": "Dinajpur",
+    "upazilas": [
+      "Birampur",
+      "Birganj",
+      "Biral",
+      "Bochaganj",
+      "Chirirbandar",
+      "Dinajpur Sadar",
+      "Ghoraghat",
+      "Hakimpur",
+      "Kaharole",
+      "Khansama",
+      "Nawabganj",
+      "Parbatipur"
+    ]
+  },
+  {
+    "district": "Gaibandha",
+    "upazilas": [
+      "Sundarganj",
+      "Saghata",
+      "Gobindaganj",
+      "Palashbari",
+      "Sadullapur",
+      "Gaibandha Sadar",
+      "Fulchhari"
+    ]
+  },
+  {
+    "district": "Kurigram",
+    "upazilas": [
+      "Bhurungamari",
+      "Char Rajibpur",
+      "Chilmari",
+      "Kurigram Sadar",
+      "Nageshwari",
+      "Phulbari",
+      "Rajarhat",
+      "Rowmari",
+      "Ulipur"
+    ]
+  },
+  {
+    "district": "Lalmonirhat",
+    "upazilas": [
+      "Aditmari",
+      "Hatibandha",
+      "Kaliganj",
+      "Lalmonirhat Sadar",
+      "Patgram"
+    ]
+  },
+  {
+    "district": "Nilphamari",
+    "upazilas": [
+      "Dimla",
+      "Domar",
+      "Jaldhaka",
+      "Kishoreganj",
+      "Nilphamari Sadar",
+      "Saidpur"
+    ]
+  },
+  {
+    "district": "Panchagarh",
+    "upazilas": ["Atwari", "Boda", "Debiganj", "Panchagarh Sadar", "Tetulia"]
+  },
+  {
+    "district": "Rangpur",
+    "upazilas": [
+      "Badarganj",
+      "Gangachara",
+      "Kaunia",
+      "Mithapukur",
+      "Pirgachha",
+      "Pirganj",
+      "Rangpur Sadar",
+      "Taraganj"
+    ]
+  },
+  {
+    "district": "Thakurgaon",
+    "upazilas": [
+      "Baliadangi",
+      "Haripur",
+      "Pirganj",
+      "Ranisankail",
+      "Thakurgaon Sadar"
+    ]
+  },
+
+  {
+    "district": "Jamalpur",
+    "upazilas": [
+      "Bakshiganj",
+      "Dewanganj",
+      "Islampur",
+      "Jamalpur Sadar",
+      "Madarganj",
+      "Melandaha",
+      "Sarishabari"
+    ]
+  },
+  {
+    "district": "Mymensingh",
+    "upazilas": [
+      "Bhaluka",
+      "Dhobaura",
+      "Fulbaria",
+      "Gaffargaon",
+      "Gauripur",
+      "Haluaghat",
+      "Ishwarganj",
+      "Muktagachha",
+      "Mymensingh Sadar",
+      "Nandail",
+      "Phulpur",
+      "Trishal"
+    ]
+  },
+  {
+    "district": "Netrokona",
+    "upazilas": [
+      "Atpara",
+      "Barhatta",
+      "Durgapur",
+      "Khaliajuri",
+      "Kalmakanda",
+      "Kendua",
+      "Madan",
+      "Mohanganj",
+      "Netrokona Sadar",
+      "Purbadhala"
+    ]
+  },
+  {
+    "district": "Sherpur",
+    "upazilas": [
+      "Jhenaigati",
+      "Nakla",
+      "Nalitabari",
+      "Sherpur Sadar",
+      "Sreebardi"
+    ]
+  }
+]

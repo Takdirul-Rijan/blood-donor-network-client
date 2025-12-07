@@ -17,6 +17,12 @@ const NavBar = () => {
       <li>
         <NavLink to="/contact">Contact</NavLink>
       </li>
+      <li>
+        <NavLink to="/login">Log In</NavLink>
+      </li>
+      <li>
+        <NavLink to="/register">Join as Donor</NavLink>
+      </li>
     </>
   );
 
@@ -64,12 +70,12 @@ const NavBar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
 
-      <div className="navbar-end">
+      <div className="navbar-end hidden lg:flex">
         <Link className="btn btn-secondary" to="/login">
           Log In
         </Link>
 
-        <Link className="btn btn-primary text-black mx-4" to="/register">
+        <Link className="btn btn-primary mx-4" to="/register">
           Join as Donor
         </Link>
       </div>
