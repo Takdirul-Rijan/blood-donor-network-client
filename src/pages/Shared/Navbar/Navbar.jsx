@@ -6,6 +6,9 @@ const NavBar = () => {
   const links = (
     <>
       <li>
+        <NavLink to="/">Home</NavLink>
+      </li>
+      <li>
         <NavLink to="/donation-requests">Donation Requests</NavLink>
       </li>
       <li>
@@ -55,15 +58,15 @@ const NavBar = () => {
           </ul>
         </div>
 
-        <div className="flex items-center gap-2 ml-2">
-          <div className="w-10 h-10 flex items-center bg-neutral">
+        <Link to={"/"} className="flex items-center">
+          <div className="w-10 h-10 flex items-center justify-center bg-neutral rounded-full">
             <Logo />
           </div>
           <h2 className="text-xl font-bold">
             <span className="text-red-600">Blood</span>
             <span className="text-gray-900">Connect</span>
           </h2>
-        </div>
+        </Link>
       </div>
 
       <div className="navbar-center hidden lg:flex">

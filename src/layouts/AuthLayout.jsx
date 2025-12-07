@@ -5,7 +5,7 @@ import NavBar from "../pages/Shared/Navbar/Navbar";
 
 const AuthLayout = () => {
   return (
-    <div className=" bg-red-50">
+    <div className="bg-red-50 min-h-screen flex flex-col">
       <NavBar></NavBar>
       <Outlet></Outlet>
     </div>
