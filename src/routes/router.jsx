@@ -14,6 +14,7 @@ import VolunteerRoute from "./VolunteerRoute";
 import AdminHome from "../pages/Dashboard/Admin/AdminHome";
 import DonorHome from "../pages/Dashboard/Donor/DonorHome";
 import VolunteerHome from "../pages/Dashboard/Volunteer/VolunteerHome";
+import RequestBlood from "../pages/RequestBlood";
 
 export const router = createBrowserRouter([
   {
@@ -22,22 +23,42 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home></Home>,
+        element: <Home />,
+      },
+      { path: "search", element: <h2>SearchDonors</h2> },
+      { path: "donation-requests", element: <h2>DonationRequests</h2> },
+
+      {
+        path: "donation-requests/:id",
+        element: (
+          <PrivateRoute>
+            <h2>DonationRequestDetails</h2>
+          </PrivateRoute>
+        ),
+      },
+
+      {
+        path: "request-blood",
+        element: (
+          <PrivateRoute>
+            <RequestBlood />
+          </PrivateRoute>
+        ),
       },
     ],
   },
 
   {
     path: "/",
-    element: <AuthLayout></AuthLayout>,
+    element: <AuthLayout />,
     children: [
       {
         path: "login",
-        element: <Login></Login>,
+        element: <Login />,
       },
       {
         path: "register",
-        element: <Register></Register>,
+        element: <Register />,
         loader: () => fetch("/districtsUpazilas.json"),
       },
     ],
@@ -47,7 +68,7 @@ export const router = createBrowserRouter([
     path: "/dashboard",
     element: (
       <PrivateRoute>
-        <DashboardLayout></DashboardLayout>
+        <DashboardLayout />
       </PrivateRoute>
     ),
     children: [
@@ -55,7 +76,7 @@ export const router = createBrowserRouter([
         path: "admin",
         element: (
           <AdminRoute>
-            <AdminHome></AdminHome>
+            <AdminHome />
           </AdminRoute>
         ),
       },
@@ -63,7 +84,7 @@ export const router = createBrowserRouter([
         path: "donor",
         element: (
           <DonorRoute>
-            <DonorHome></DonorHome>
+            <DonorHome />
           </DonorRoute>
         ),
       },
@@ -71,7 +92,7 @@ export const router = createBrowserRouter([
         path: "volunteer",
         element: (
           <VolunteerRoute>
-            <VolunteerHome></VolunteerHome>
+            <VolunteerHome />
           </VolunteerRoute>
         ),
       },

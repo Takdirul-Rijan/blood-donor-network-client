@@ -28,15 +28,32 @@ const NavBar = () => {
       <li className="font-medium">
         <NavLink to="/">Home</NavLink>
       </li>
+
       <li className="font-medium">
         <NavLink to="/donation-requests">Donation Requests</NavLink>
       </li>
+
       <li className="font-medium">
         <NavLink to="/search">Search Donors</NavLink>
       </li>
+
+      {/* only logged-in users can request blood */}
+      {user && (
+        <li className="font-medium">
+          <NavLink to="/request-blood">Request Blood</NavLink>
+        </li>
+      )}
+
+      {user && (
+        <li className="font-medium">
+          <NavLink to="/funding">Funding</NavLink>
+        </li>
+      )}
+
       <li className="font-medium">
         <NavLink to="/about">About Us</NavLink>
       </li>
+
       <li className="font-medium">
         <NavLink to="/contact">Contact</NavLink>
       </li>
@@ -89,18 +106,36 @@ const NavBar = () => {
 
       <div className="navbar-end flex flex-col md:flex-row items-center gap-2 md:gap-4">
         {user ? (
-          <a onClick={handleLogOut} className="btn btn-secondary w-32">
-            Log Out
-          </a>
-        ) : (
-          <Link className="btn btn-secondary w-32" to="/login">
-            Log In
-          </Link>
-        )}
+          <div className="dropdown dropdown-end">
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <img src={user.photoURL} alt="avatar" />
+              </div>
+            </label>
 
-        <Link className="btn btn-primary w-32" to="/register">
-          Join as Donor
-        </Link>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-40"
+            >
+              <li>
+                <Link to="/dashboard">Dashboard</Link>
+              </li>
+              <li>
+                <a onClick={handleLogOut}>Log Out</a>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <>
+            <Link className="btn btn-secondary w-32" to="/login">
+              Log In
+            </Link>
+
+            <Link className="btn btn-primary w-32" to="/register">
+              Join as Donor
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );
