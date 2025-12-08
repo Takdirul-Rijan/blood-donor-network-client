@@ -29,7 +29,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="w-11/12 mx-auto py-14 bg-red-50 rounded-2xl -mt-8">
+    <section className="w-11/12 mx-auto py-14 bg-red-50 -mt-8">
       <div className="grid md:grid-cols-2 gap-10 items-center p-5">
         <motion.div
           initial={{ opacity: 0, x: -40 }}
