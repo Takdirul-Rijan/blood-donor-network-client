@@ -72,7 +72,7 @@ const NavBar = () => {
           </ul>
         </div>
 
-        <Link to={"/"} className="flex items-center">
+        <div className="flex items-center">
           <div className="w-10 h-10 flex items-center justify-center bg-neutral rounded-full">
             <Logo />
           </div>
@@ -80,7 +80,7 @@ const NavBar = () => {
             <span className="text-red-600">Blood</span>
             <span className="text-gray-900">Connect</span>
           </h2>
-        </Link>
+        </div>
       </div>
 
       <div className="navbar-center hidden lg:flex">
