@@ -31,48 +31,65 @@ const Profile = () => {
   useEffect(() => {
     if (!user?.email) return;
 
+    let isMounted = true;
+
     const fetchUser = async () => {
       setLoading(true);
       try {
         const res = await axios.get(
-          `${import.meta.env.VITE_API_URL}/users/${user.email}`
+          `${import.meta.env.VITE_API_URL}/users/${encodeURIComponent(
+            user.email
+          )}`
         );
         const data = res.data;
 
-        reset({
-          name: data.name || "",
-          email: data.email || "",
-          avatar: data.avatar || "",
-          bloodGroup: data.bloodGroup || "",
-          district: data.district || "",
-          upazila: data.upazila || "",
-        });
+        if (isMounted) {
+          reset({
+            name: data.name || "",
+            email: data.email || "",
+            avatar: data.avatar || "",
+            bloodGroup: data.bloodGroup || "",
+            district: data.district || "",
+            upazila: data.upazila || "",
+          });
+          setLoading(false);
+        }
       } catch (error) {
         console.error("Failed to fetch user data", error);
-        Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: "Failed to load profile data",
-          confirmButtonColor: "#d32f2f",
-        });
-      } finally {
-        setLoading(false);
-        setIsEditing(false);
+        if (isMounted) {
+          setLoading(false);
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text:
+              error.response?.data?.message || "Failed to load profile data",
+            confirmButtonColor: "#d32f2f",
+          });
+        }
       }
     };
 
     fetchUser();
+
+    return () => {
+      isMounted = false;
+    };
   }, [user?.email, reset]);
 
   const onSubmit = async (data) => {
     try {
-      await axios.patch(`${import.meta.env.VITE_API_URL}/users/${data.email}`, {
-        name: data.name,
-        avatar: data.avatar,
-        bloodGroup: data.bloodGroup,
-        district: data.district,
-        upazila: data.upazila,
-      });
+      await axios.patch(
+        `${import.meta.env.VITE_API_URL}/users/${encodeURIComponent(
+          data.email
+        )}`,
+        {
+          name: data.name,
+          avatar: data.avatar,
+          bloodGroup: data.bloodGroup,
+          district: data.district,
+          upazila: data.upazila,
+        }
+      );
 
       Swal.fire({
         icon: "success",
@@ -102,14 +119,14 @@ const Profile = () => {
   }
 
   return (
-    <div className="max-w-xl bg-white shadow-md rounded-lg p-6 mx-auto">
+    <div className="max-w-xl bg-white shadow-lg rounded-xl p-6 mx-auto border border-gray-200">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-semibold">My Profile</h2>
+        <h2 className="text-2xl font-semibold text-gray-700">My Profile</h2>
 
         {!isEditing ? (
           <button
             onClick={() => setIsEditing(true)}
-            className="btn btn-primary btn-sm"
+            className="btn btn-secondary btn-sm px-4 py-2 text-white font-medium rounded-md"
           >
             Edit
           </button>
@@ -117,11 +134,11 @@ const Profile = () => {
           <button
             onClick={handleSubmit(onSubmit)}
             disabled={isSubmitting}
-            className={`btn btn-success btn-sm ${
-              isSubmitting ? "loading" : ""
+            className={`btn btn-success btn-sm px-4 py-2 text-white font-medium rounded-md ${
+              isSubmitting ? "bg-green-400 cursor-not-allowed" : "bg-green-600"
             }`}
           >
-            Save
+            {isSubmitting ? "Saving..." : "Save"}
           </button>
         )}
       </div>
@@ -131,25 +148,23 @@ const Profile = () => {
           <img
             src={avatarValue}
             alt="avatar"
-            className="w-24 h-24 rounded-full object-cover"
+            className="w-24 h-24 rounded-full object-cover shadow-md"
             onError={(e) => (e.target.src = "/placeholder-avatar.png")}
           />
         ) : (
-          <div className="w-24 h-24 rounded-full bg-gray-200 flex items-center justify-center text-gray-400">
+          <div className="w-24 h-24 rounded-full bg-gray-200 flex items-center justify-center text-gray-400 shadow-md">
             No Avatar
           </div>
         )}
       </div>
 
-      {/* Profile Form */}
-      <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
-        {/* Name */}
+      <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
         <div>
           <input
             type="text"
             {...register("name", { required: "Name is required" })}
             disabled={!isEditing}
-            className={`input input-bordered w-full ${
+            className={`input input-bordered w-full px-4 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none ${
               errors.name ? "input-error" : ""
             }`}
             placeholder="Name"
@@ -159,30 +174,27 @@ const Profile = () => {
           )}
         </div>
 
-        {/* Email */}
         <input
           type="email"
           {...register("email")}
           disabled
-          className="input input-bordered w-full bg-gray-200 cursor-not-allowed"
+          className="input input-bordered w-full px-4 py-2 rounded-md bg-gray-100 cursor-not-allowed border border-gray-300"
           placeholder="Email"
         />
 
-        {/* Avatar URL */}
         <input
           type="text"
           {...register("avatar")}
           disabled={!isEditing}
-          className="input input-bordered w-full"
+          className="input input-bordered w-full px-4 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none"
           placeholder="Avatar URL"
         />
 
-        {/* Blood Group */}
         <div>
           <select
             {...register("bloodGroup", { required: "Blood group is required" })}
             disabled={!isEditing}
-            className={`select select-bordered w-full ${
+            className={`select select-bordered w-full px-4 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none ${
               errors.bloodGroup ? "select-error" : ""
             }`}
           >
@@ -198,13 +210,12 @@ const Profile = () => {
           )}
         </div>
 
-        {/* District */}
         <div>
           <input
             type="text"
             {...register("district", { required: "District is required" })}
             disabled={!isEditing}
-            className={`input input-bordered w-full ${
+            className={`input input-bordered w-full px-4 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none ${
               errors.district ? "input-error" : ""
             }`}
             placeholder="District"
@@ -214,13 +225,12 @@ const Profile = () => {
           )}
         </div>
 
-        {/* Upazila */}
         <div>
           <input
             type="text"
             {...register("upazila", { required: "Upazila is required" })}
             disabled={!isEditing}
-            className={`input input-bordered w-full ${
+            className={`input input-bordered w-full px-4 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none ${
               errors.upazila ? "input-error" : ""
             }`}
             placeholder="Upazila"

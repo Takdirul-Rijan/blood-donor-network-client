@@ -51,6 +51,19 @@ const Register = () => {
             updateUserProfile(userProfile)
               .then(() => {
                 // console.log("user profile updated done.");
+
+                const newUser = {
+                  name: data.name,
+                  email: data.email,
+                  avatar: res.data.data.url,
+                  bloodGroup: data.bloodGroup,
+                  district: data.district,
+                  upazila: data.upazila,
+                  password: data.password,
+                };
+
+                axios.post("http://localhost:3000/users/register", newUser);
+
                 navigate(location.state || "/");
               })
               .catch((error) => console.log(error));

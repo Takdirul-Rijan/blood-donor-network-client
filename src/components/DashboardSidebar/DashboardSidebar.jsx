@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import useRole from "../../hooks/useRole";
 import { Link, NavLink } from "react-router";
 import { FaHome } from "react-icons/fa";
+import { MdOutlineHome } from "react-icons/md";
 
 const DashboardSidebar = () => {
   const { user } = useAuth();
@@ -13,8 +14,13 @@ const DashboardSidebar = () => {
       <Link to={"/"}>
         <FaHome size={24} />
       </Link>
-      <h2 className="text-xl font-bold">
-        Dashboard — <span className="text-red-600">{role}</span>
+      <h2 className="text-xl font-bold mt-3">
+        <Link to="/dashboard" className="flex items-center gap-1">
+          <MdOutlineHome className="text-2xl" />
+          <span>
+            Dashboard — <span className="text-red-600">{role}</span>
+          </span>
+        </Link>
       </h2>
 
       {/* Common Links */}
