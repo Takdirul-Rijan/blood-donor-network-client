@@ -15,6 +15,8 @@ import AdminHome from "../pages/Dashboard/Admin/AdminHome";
 import DonorHome from "../pages/Dashboard/Donor/DonorHome";
 import VolunteerHome from "../pages/Dashboard/Volunteer/VolunteerHome";
 import RequestBlood from "../pages/RequestBlood";
+import MyDonationRequests from "../pages/Dashboard/Donor/MyDonationRequests"; // Import MyDonationRequests
+import Profile from "../pages/Dashboard/Profile/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -95,6 +97,18 @@ export const router = createBrowserRouter([
             <VolunteerHome />
           </VolunteerRoute>
         ),
+      },
+      {
+        path: "my-requests",
+        element: (
+          <DonorRoute>
+            <MyDonationRequests />
+          </DonorRoute>
+        ),
+      },
+      {
+        path: "profile",
+        element: <Profile></Profile>,
       },
     ],
   },

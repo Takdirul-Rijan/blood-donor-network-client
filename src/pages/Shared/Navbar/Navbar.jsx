@@ -3,9 +3,10 @@ import { Link, NavLink } from "react-router";
 import Logo from "../../../components/Logo/Logo";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
+import { ScaleLoader } from "react-spinners";
 
 const NavBar = () => {
-  const { user, logOut } = useAuth();
+  const { user, logOut, loading } = useAuth();
 
   const handleLogOut = () => {
     logOut()
@@ -22,7 +23,12 @@ const NavBar = () => {
         // console.log(error);
       });
   };
-
+  if (loading)
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <ScaleLoader color="#e63946" />
+      </div>
+    );
   const links = (
     <>
       <li className="font-medium">

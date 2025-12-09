@@ -1,7 +1,8 @@
 import React from "react";
 import useAuth from "../../hooks/useAuth";
 import useRole from "../../hooks/useRole";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
+import { FaHome } from "react-icons/fa";
 
 const DashboardSidebar = () => {
   const { user } = useAuth();
@@ -9,6 +10,9 @@ const DashboardSidebar = () => {
 
   return (
     <div className="space-y-5">
+      <Link to={"/"}>
+        <FaHome size={24} />
+      </Link>
       <h2 className="text-xl font-bold">
         Dashboard — <span className="text-red-600">{role}</span>
       </h2>
