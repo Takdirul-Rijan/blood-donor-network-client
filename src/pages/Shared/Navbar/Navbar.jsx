@@ -4,9 +4,21 @@ import Logo from "../../../components/Logo/Logo";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { ScaleLoader } from "react-spinners";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
-const NavBar = () => {
+const Navbar = () => {
   const { user, logOut, loading } = useAuth();
+  const axiosSecure = useAxiosSecure();
+
+  const { data: dbUser } = useQuery({
+    queryKey: ["dbUser", user?.email],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/users/${user?.email}`);
+      return res.data;
+    },
+    enabled: !!user?.email,
+  });
 
   const handleLogOut = () => {
     logOut()
@@ -21,12 +33,14 @@ const NavBar = () => {
       })
       .catch((error) => {});
   };
+
   if (loading)
     return (
       <div className="flex justify-center items-center min-h-screen">
         <ScaleLoader color="#e63946" />
       </div>
     );
+
   const links = (
     <>
       <li className="font-medium">
@@ -68,7 +82,6 @@ const NavBar = () => {
         </NavLink>
       </li>
 
-      {/* only logged-in users can request blood */}
       {user && (
         <li className="font-medium">
           <NavLink
@@ -176,7 +189,7 @@ const NavBar = () => {
           <div className="dropdown dropdown-end relative group">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full relative">
-                <img src={user.photoURL} alt="avatar" />
+                <img src={dbUser?.avatar || user.photoURL} alt="avatar" />
               </div>
             </label>
 
@@ -185,7 +198,7 @@ const NavBar = () => {
              opacity-0 group-hover:opacity-100 transition-all duration-200 
              whitespace-nowrap"
             >
-              {user.displayName}
+              {dbUser?.name}
             </span>
 
             <ul
@@ -216,4 +229,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default Navbar;

@@ -9,6 +9,15 @@ const DonorHome = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
 
+  const { data: dbUser } = useQuery({
+    queryKey: ["dbUser", user?.email],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/users/${user?.email}`);
+      return res.data;
+    },
+    enabled: !!user?.email,
+  });
+
   const { data: recentRequests = [], refetch } = useQuery({
     queryKey: ["recentRequests", user?.email],
     queryFn: async () => {
@@ -34,7 +43,7 @@ const DonorHome = () => {
     <div className="p-6">
       <h1 className="text-3xl font-bold mb-6">
         <span className="text-amber-600">
-          {user?.displayName} <br />
+          {dbUser?.name} <br />
         </span>
         <span className="text-xl text-green-600">
           Welcome to BloodConnect 💐

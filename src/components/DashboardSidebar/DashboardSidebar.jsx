@@ -19,11 +19,18 @@ const DashboardSidebar = () => {
       </Link>
 
       {/* COMMON MENU */}
-      {/* <ul className="menu p-2 bg-base-200 rounded-md">
+      <ul className="menu p-2 bg-base-200 rounded-md">
         <li>
-          <NavLink to="/dashboard/profile">My Profile</NavLink>
+          <NavLink
+            to="/dashboard/profile"
+            className={({ isActive }) =>
+              isActive ? "bg-amber-600 text-white font-bold rounded-lg " : ""
+            }
+          >
+            My Profile
+          </NavLink>
         </li>
-      </ul> */}
+      </ul>
 
       {/* DONOR MENU */}
       {role === "donor" && (
@@ -39,17 +46,6 @@ const DashboardSidebar = () => {
             </NavLink>
           </li>
 
-          <li className="my-1">
-            <NavLink
-              to="/dashboard/profile"
-              className={({ isActive }) =>
-                isActive ? "bg-amber-600 text-white font-bold rounded-lg " : ""
-              }
-            >
-              My Profile
-            </NavLink>
-          </li>
-
           <li>
             <NavLink
               to="/dashboard/my-requests"
@@ -60,6 +56,7 @@ const DashboardSidebar = () => {
               My Donation Requests
             </NavLink>
           </li>
+
           <li className="mt-1">
             <NavLink
               to="/dashboard/create-donation-request"
@@ -77,18 +74,44 @@ const DashboardSidebar = () => {
       {role === "admin" && (
         <ul className="menu p-2 bg-base-200 rounded-md">
           <li>
-            <NavLink to="/dashboard/admin">Admin Home</NavLink>
+            <NavLink
+              to="/dashboard/admin"
+              className={({ isActive }) =>
+                isActive ? "bg-amber-600 text-white font-bold rounded-lg " : ""
+              }
+            >
+              Admin Home
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/manage-users">Manage Users</NavLink>
+            <NavLink
+              to="/dashboard/manage-users"
+              className={({ isActive }) =>
+                isActive ? "bg-amber-600 text-white font-bold rounded-lg " : ""
+              }
+            >
+              Manage Users
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/all-donations">
+            <NavLink
+              to="/dashboard/all-donations"
+              className={({ isActive }) =>
+                isActive ? "bg-amber-600 text-white font-bold rounded-lg " : ""
+              }
+            >
               All Donation Requests
             </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/funding">Funding</NavLink>
+            <NavLink
+              to="/dashboard/funding"
+              className={({ isActive }) =>
+                isActive ? "bg-amber-600 text-white font-bold rounded-lg " : ""
+              }
+            >
+              Funding
+            </NavLink>
           </li>
         </ul>
       )}
@@ -97,10 +120,22 @@ const DashboardSidebar = () => {
       {role === "volunteer" && (
         <ul className="menu p-2 bg-base-200 rounded-md">
           <li>
-            <NavLink to="/dashboard/volunteer">Volunteer Home</NavLink>
+            <NavLink
+              to="/dashboard/volunteer"
+              className={({ isActive }) =>
+                isActive ? "bg-amber-600 text-white font-bold rounded-lg " : ""
+              }
+            >
+              Volunteer Home
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/all-donations">
+            <NavLink
+              to="/dashboard/all-donations"
+              className={({ isActive }) =>
+                isActive ? "bg-amber-600 text-white font-bold rounded-lg " : ""
+              }
+            >
               Manage Donation Status
             </NavLink>
           </li>
