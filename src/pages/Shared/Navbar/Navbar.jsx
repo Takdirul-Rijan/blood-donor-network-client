@@ -19,9 +19,7 @@ const NavBar = () => {
           showConfirmButton: false,
         });
       })
-      .catch((error) => {
-        // console.log(error);
-      });
+      .catch((error) => {});
   };
   if (loading)
     return (
@@ -32,36 +30,99 @@ const NavBar = () => {
   const links = (
     <>
       <li className="font-medium">
-        <NavLink to="/">Home</NavLink>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive
+              ? "bg-red-600 text-white font-bold py-2 px-6 rounded-lg "
+              : ""
+          }
+        >
+          Home
+        </NavLink>
       </li>
 
       <li className="font-medium">
-        <NavLink to="/donation-requests">Donation Requests</NavLink>
+        <NavLink
+          to="/donation-requests"
+          className={({ isActive }) =>
+            isActive
+              ? "bg-red-600 text-white font-bold py-2 px-6 rounded-lg "
+              : ""
+          }
+        >
+          Donation Requests
+        </NavLink>
       </li>
 
       <li className="font-medium">
-        <NavLink to="/search">Search Donors</NavLink>
+        <NavLink
+          to="/search"
+          className={({ isActive }) =>
+            isActive
+              ? "bg-red-600 text-white font-bold py-2 px-6 rounded-lg "
+              : ""
+          }
+        >
+          Search Donors
+        </NavLink>
       </li>
 
       {/* only logged-in users can request blood */}
       {user && (
         <li className="font-medium">
-          <NavLink to="/request-blood">Request Blood</NavLink>
+          <NavLink
+            to="/dashboard/request-blood"
+            className={({ isActive }) =>
+              isActive
+                ? "bg-red-600 text-white font-bold py-2 px-6 rounded-lg "
+                : ""
+            }
+          >
+            Create Donation Request
+          </NavLink>
         </li>
       )}
 
       {user && (
         <li className="font-medium">
-          <NavLink to="/funding">Funding</NavLink>
+          <NavLink
+            to="/funding"
+            className={({ isActive }) =>
+              isActive
+                ? "bg-red-600 text-white font-bold py-2 px-6 rounded-lg "
+                : ""
+            }
+          >
+            Funding
+          </NavLink>
         </li>
       )}
 
       <li className="font-medium">
-        <NavLink to="/about">About Us</NavLink>
+        <NavLink
+          to="/about"
+          className={({ isActive }) =>
+            isActive
+              ? "bg-red-600 text-white font-bold py-2 px-6 rounded-lg "
+              : ""
+          }
+        >
+          About Us
+        </NavLink>
       </li>
 
       <li className="font-medium">
-        <NavLink to="/contact">Contact</NavLink>
+        <NavLink
+          to="/contact-us"
+          className={({ isActive }) =>
+            isActive
+              ? "bg-red-600 text-white font-bold py-2 px-6 rounded-lg "
+              : ""
+          }
+        >
+          Contact
+        </NavLink>
       </li>
     </>
   );
@@ -95,7 +156,7 @@ const NavBar = () => {
           </ul>
         </div>
 
-        <div className="flex items-center">
+        <div className="flex items-center mr-16">
           <div className="w-10 h-10 flex items-center justify-center bg-neutral rounded-full">
             <Logo />
           </div>
@@ -112,21 +173,29 @@ const NavBar = () => {
 
       <div className="navbar-end flex flex-col md:flex-row items-center gap-2 md:gap-4">
         {user ? (
-          <div className="dropdown dropdown-end">
+          <div className="dropdown dropdown-end relative group">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
+              <div className="w-10 rounded-full relative">
                 <img src={user.photoURL} alt="avatar" />
               </div>
             </label>
 
+            <span
+              className="absolute right-0 mt-12 bg-base-200 text-sm px-2 py-1 rounded shadow 
+             opacity-0 group-hover:opacity-100 transition-all duration-200 
+             whitespace-nowrap"
+            >
+              {user.displayName}
+            </span>
+
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-40"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-48 animate__animated animate__fadeIn"
             >
-              <li>
+              <li className="font-medium">
                 <Link to="/dashboard">Dashboard</Link>
               </li>
-              <li>
+              <li className="font-medium">
                 <a onClick={handleLogOut}>Log Out</a>
               </li>
             </ul>

@@ -10,13 +10,15 @@ import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
 import DonorRoute from "./DonorRoute";
 import VolunteerRoute from "./VolunteerRoute";
-
-import AdminHome from "../pages/Dashboard/Admin/AdminHome";
 import DonorHome from "../pages/Dashboard/Donor/DonorHome";
+import AdminHome from "../pages/Dashboard/Admin/AdminHome";
 import VolunteerHome from "../pages/Dashboard/Volunteer/VolunteerHome";
 import RequestBlood from "../pages/RequestBlood";
-import MyDonationRequests from "../pages/Dashboard/Donor/MyDonationRequests"; // Import MyDonationRequests
+import MyDonationRequests from "../pages/Dashboard/Donor/MyDonationRequests";
 import Profile from "../pages/Dashboard/Profile/Profile";
+import ContactSection from "../pages/Home/ContactSection/ContactSection";
+import DashboardRedirect from "../components/DashboardRedirect/DashboardRedirect";
+import EditRequest from "../pages/Dashboard/EditRequest/EditRequest";
 
 export const router = createBrowserRouter([
   {
@@ -29,21 +31,16 @@ export const router = createBrowserRouter([
       },
       { path: "search", element: <h2>SearchDonors</h2> },
       { path: "donation-requests", element: <h2>DonationRequests</h2> },
+      {
+        path: "contact-us",
+        element: <ContactSection></ContactSection>,
+      },
 
       {
         path: "donation-requests/:id",
         element: (
           <PrivateRoute>
             <h2>DonationRequestDetails</h2>
-          </PrivateRoute>
-        ),
-      },
-
-      {
-        path: "request-blood",
-        element: (
-          <PrivateRoute>
-            <RequestBlood />
           </PrivateRoute>
         ),
       },
@@ -75,6 +72,10 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
+        index: true,
+        element: <DashboardRedirect></DashboardRedirect>,
+      },
+      {
         path: "admin",
         element: (
           <AdminRoute>
@@ -86,7 +87,7 @@ export const router = createBrowserRouter([
         path: "donor",
         element: (
           <DonorRoute>
-            <DonorHome />
+            <DonorHome></DonorHome>
           </DonorRoute>
         ),
       },
@@ -98,6 +99,7 @@ export const router = createBrowserRouter([
           </VolunteerRoute>
         ),
       },
+
       {
         path: "my-requests",
         element: (
@@ -107,8 +109,21 @@ export const router = createBrowserRouter([
         ),
       },
       {
+        path: "request-blood",
+        element: (
+          <DonorRoute>
+            <RequestBlood></RequestBlood>
+          </DonorRoute>
+        ),
+        loader: () => fetch("/districtsUpazilas.json"),
+      },
+      {
         path: "profile",
         element: <Profile></Profile>,
+      },
+      {
+        path: "edit-request/:id",
+        element: <EditRequest></EditRequest>,
       },
     ],
   },

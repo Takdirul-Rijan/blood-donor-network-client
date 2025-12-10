@@ -1,31 +1,32 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useEffect, useState } from "react";
 import useAuth from "./useAuth";
+import axios from "axios";
 
 const useRole = () => {
   const { user } = useAuth();
-  const [role, setRole] = useState("");
+  const [role, setRole] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!user?.email) return;
+    if (!user?.email) {
+      setRole(null);
+      setLoading(false);
+      return;
+    }
 
-    const fetchRole = async () => {
-      try {
-        const res = await axios.get(
-          `${import.meta.env.VITE_API_URL}/users/${encodeURIComponent(
-            user.email.toLowerCase()
-          )}/role`
-        );
-        setRole(res.data.role);
-      } catch (err) {
-        console.error("Error fetching role:", err);
-      } finally {
+    setLoading(true);
+
+    axios
+      .get(`${import.meta.env.VITE_API_URL}/users/role/${user.email}`)
+      .then((res) => {
+        setRole(res.data?.role || "donor");
         setLoading(false);
-      }
-    };
-
-    fetchRole();
+      })
+      .catch((err) => {
+        console.error("Error fetching role:", err);
+        setRole(null);
+        setLoading(false);
+      });
   }, [user?.email]);
 
   return { role, loading };

@@ -1,16 +1,23 @@
 import React from "react";
-import Forbidden from "../components/Forbidden/Forbidden";
-import Loading from "../components/Loading/Loading";
 import useAuth from "../hooks/useAuth";
 import useRole from "../hooks/useRole";
+import { Navigate } from "react-router";
 
 const DonorRoute = ({ children }) => {
-  const { loading } = useAuth();
-  const { role, roleLoading } = useRole();
+  const { user, loading: authLoading } = useAuth();
+  const { role, loading: roleLoading } = useRole();
 
-  if (loading || roleLoading) return <Loading />;
+  if (authLoading || roleLoading) {
+    return (
+      <div className="flex justify-center items-center h-64">
+        <span className="loading loading-bars loading-xl"></span>
+      </div>
+    );
+  }
 
-  if (role !== "donor") return <Forbidden />;
+  if (!user || role !== "donor") {
+    return <Navigate to="/dashboard" replace />;
+  }
 
   return children;
 };

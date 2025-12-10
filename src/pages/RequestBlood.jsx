@@ -1,13 +1,30 @@
-import React from "react";
+import { useLoaderData } from "react-router";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 import Swal from "sweetalert2";
 
 const RequestBlood = () => {
+  const loaderData = useLoaderData();
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset, setValue } = useForm();
+
+  const [selectedDistrict, setSelectedDistrict] = useState("");
+  const [upazilas, setUpazilas] = useState([]);
+
+  const handleDistrictChange = (e) => {
+    const district = e.target.value;
+    setSelectedDistrict(district);
+
+    const districtData = loaderData.find((item) => item.district === district);
+    if (districtData) {
+      setUpazilas(districtData.upazilas);
+
+      setValue("upazila", "");
+    }
+  };
 
   const onSubmit = async (data) => {
     const requestInfo = {
@@ -24,11 +41,13 @@ const RequestBlood = () => {
         icon: "success",
         title: "Blood Request Submitted!",
         text: "A donor will contact you soon.",
-        timer: 2000,
-        showConfirmButton: false,
+        confirmButtonText: "OK",
+        showConfirmButton: true,
       });
 
       reset();
+      setSelectedDistrict("");
+      setUpazilas([]);
     } catch (error) {
       console.error(error);
       Swal.fire({
@@ -82,11 +101,44 @@ const RequestBlood = () => {
         </div>
 
         <div>
-          <label className="font-semibold">Full Address</label>
+          <label className="font-semibold">Needed Time</label>
           <input
-            {...register("address", { required: true })}
+            type="time"
+            {...register("neededTime", { required: true })}
             className="w-full border p-2 rounded"
           />
+        </div>
+
+        <div>
+          <label className="font-semibold">District</label>
+          <select
+            {...register("district", { required: true })}
+            onChange={handleDistrictChange}
+            value={selectedDistrict}
+            className="w-full border p-2 rounded"
+          >
+            <option value="">Select District</option>
+            {loaderData.map((districtData) => (
+              <option key={districtData.district} value={districtData.district}>
+                {districtData.district}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <label className="font-semibold">Upazila</label>
+          <select
+            {...register("upazila", { required: true })}
+            className="w-full border p-2 rounded"
+          >
+            <option value="">Select Upazila</option>
+            {upazilas.map((upazila) => (
+              <option key={upazila} value={upazila}>
+                {upazila}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div>
