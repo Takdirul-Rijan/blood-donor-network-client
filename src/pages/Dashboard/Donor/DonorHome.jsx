@@ -107,7 +107,7 @@ const DonorHome = () => {
                             refetch();
                           }
                         }}
-                        className="px-3 py-1 bg-red-600 text-white rounded"
+                        className="px-3 py-1  mt-2 sm:mt-0 bg-red-600 text-white rounded"
                       >
                         Delete
                       </button>
@@ -139,7 +139,7 @@ const DonorHome = () => {
           </div>
 
           <Link
-            to="/dashboard/my-requests"
+            to="/dashboard/my-donation-requests"
             className="mt-5 inline-block bg-red-600 text-white px-4 py-2 rounded"
           >
             View My All Requests

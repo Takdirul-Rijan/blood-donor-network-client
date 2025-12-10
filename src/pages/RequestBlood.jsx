@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { useForm } from "react-hook-form";
@@ -10,6 +10,7 @@ const RequestBlood = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const { register, handleSubmit, reset, setValue } = useForm();
+  const navigate = useNavigate();
 
   const [selectedDistrict, setSelectedDistrict] = useState("");
   const [upazilas, setUpazilas] = useState([]);
@@ -48,6 +49,7 @@ const RequestBlood = () => {
       reset();
       setSelectedDistrict("");
       setUpazilas([]);
+      navigate("/dashboard");
     } catch (error) {
       console.error(error);
       Swal.fire({
