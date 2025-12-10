@@ -20,6 +20,7 @@ import DashboardRedirect from "../components/DashboardRedirect/DashboardRedirect
 import EditRequest from "../pages/Dashboard/EditRequest/EditRequest";
 import ViewRequest from "../pages/Dashboard/Donor/ViewRequest";
 import MyDonationRequests from "../pages/Dashboard/MyRequests/MyDonationRequests";
+import CreateDonationRequest from "../pages/Dashboard/CreateDonationRequest/CreateDonationRequest";
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +30,15 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "request-blood",
+        element: (
+          <PrivateRoute>
+            <RequestBlood></RequestBlood>
+          </PrivateRoute>
+        ),
+        loader: () => fetch("/districtsUpazilas.json"),
       },
       { path: "search", element: <h2>SearchDonors</h2> },
       { path: "donation-requests", element: <h2>DonationRequests</h2> },
@@ -110,15 +120,6 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "request-blood",
-        element: (
-          <DonorRoute>
-            <RequestBlood></RequestBlood>
-          </DonorRoute>
-        ),
-        loader: () => fetch("/districtsUpazilas.json"),
-      },
-      {
         path: "profile",
         element: <Profile></Profile>,
       },
@@ -133,6 +134,11 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/my-donation-requests",
         element: <MyDonationRequests></MyDonationRequests>,
+      },
+      {
+        path: "create-donation-request",
+        element: <CreateDonationRequest></CreateDonationRequest>,
+        loader: () => fetch("/districtsUpazilas.json"),
       },
     ],
   },

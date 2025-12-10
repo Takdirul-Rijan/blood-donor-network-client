@@ -1,7 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router";
+import useAuth from "../../../hooks/useAuth";
 
 const Banner = () => {
+  const { user } = useAuth();
   return (
     <section className="w-11/12 mx-auto py-8">
       <div className="grid md:grid-cols-2 items-center gap-10 bg-gradient-to-r from-red-600 to-red-500 p-6 shadow-xl">
@@ -41,7 +44,11 @@ const Banner = () => {
               whileTap={{ scale: 0.95 }}
               className="px-8 py-3 bg-white text-red-600 font-semibold rounded-lg shadow hover:bg-red-50 transition"
             >
-              Join as a Donor
+              {user ? (
+                <Link to={"/dashboard"}>Open Dashboard</Link>
+              ) : (
+                <Link to={"/register"}>Join as a Donor</Link>
+              )}
             </motion.button>
 
             <motion.button

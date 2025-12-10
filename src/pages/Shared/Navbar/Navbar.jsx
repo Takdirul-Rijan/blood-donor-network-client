@@ -72,7 +72,7 @@ const NavBar = () => {
       {user && (
         <li className="font-medium">
           <NavLink
-            to="/dashboard/request-blood"
+            to="/dashboard/create-donation-request"
             className={({ isActive }) =>
               isActive
                 ? "bg-red-600 text-white font-bold py-2 px-6 rounded-lg "
