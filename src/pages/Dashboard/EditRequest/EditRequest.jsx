@@ -3,12 +3,12 @@ import { useNavigate, useParams } from "react-router";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import useAuth from "../../../hooks/useAuth";
 
 const EditRequest = () => {
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
   const { register, handleSubmit, setValue } = useForm();
-  const navigate = useNavigate();
 
   useEffect(() => {
     axiosSecure.get(`/requests/${id}`).then((res) => {
@@ -35,9 +35,7 @@ const EditRequest = () => {
         title: "Success!",
         text: "Donation request updated successfully",
         confirmButtonText: "OK",
-      }).then(() => {
-        navigate("/dashboard");
-      });
+      }).then(() => {});
     } catch (err) {
       Swal.fire("Error!", "Failed to update donation request", "error");
     }
@@ -118,7 +116,7 @@ const EditRequest = () => {
           <label className="font-semibold">Notes</label>
           <textarea
             {...register("notes")}
-            className="border p-2 w-full rounded"
+            className="border p-2 w-full rounded h-[42px]"
           />
         </div>
 
