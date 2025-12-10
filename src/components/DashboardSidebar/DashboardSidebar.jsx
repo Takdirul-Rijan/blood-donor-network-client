@@ -85,7 +85,7 @@ const DashboardSidebar = () => {
           </li>
           <li>
             <NavLink
-              to="/dashboard/manage-users"
+              to="/dashboard/all-users"
               className={({ isActive }) =>
                 isActive ? "bg-amber-600 text-white font-bold rounded-lg " : ""
               }
