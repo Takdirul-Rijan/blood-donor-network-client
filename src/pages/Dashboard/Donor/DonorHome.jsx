@@ -32,7 +32,18 @@ const DonorHome = () => {
 
   return (
     <div className="p-6">
-      <h1 className="text-3xl font-bold mb-6">Welcome, {user?.displayName}</h1>
+      <h1 className="text-3xl font-bold mb-6">
+        <span className="text-amber-600">
+          {user?.displayName} <br />
+        </span>
+        <span className="text-xl text-green-600">
+          Welcome to BloodConnect 💐
+        </span>{" "}
+        <br />
+        <span className="text-xl text-green-600">
+          Thank you for bringing hope and life to others
+        </span>
+      </h1>
 
       {recentRequests.length > 0 && (
         <>

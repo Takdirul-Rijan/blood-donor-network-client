@@ -19,6 +19,7 @@ import Profile from "../pages/Dashboard/Profile/Profile";
 import ContactSection from "../pages/Home/ContactSection/ContactSection";
 import DashboardRedirect from "../components/DashboardRedirect/DashboardRedirect";
 import EditRequest from "../pages/Dashboard/EditRequest/EditRequest";
+import ViewRequest from "../pages/Dashboard/Donor/ViewRequest";
 
 export const router = createBrowserRouter([
   {
@@ -124,6 +125,10 @@ export const router = createBrowserRouter([
       {
         path: "edit-request/:id",
         element: <EditRequest></EditRequest>,
+      },
+      {
+        path: "/dashboard/request/:id",
+        element: <ViewRequest></ViewRequest>,
       },
     ],
   },

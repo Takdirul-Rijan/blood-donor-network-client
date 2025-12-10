@@ -1,10 +1,7 @@
 import React from "react";
 import useRole from "../../hooks/useRole";
 import { FaHome } from "react-icons/fa";
-// import { Link, NavLink } from "react-router-dom";
-// import useRole from "../../hooks/useRole";
-// import { FaHome } from "react-icons/fa";
-import { MdOutlineHome } from "react-icons/md";
+
 import { Link, NavLink } from "react-router";
 
 const DashboardSidebar = () => {
@@ -17,10 +14,8 @@ const DashboardSidebar = () => {
       </Link>
 
       <Link to="/dashboard" className="flex items-center gap-1 mt-5">
-        <MdOutlineHome className="text-2xl" />
-        <span>
-          Dashboard — <span className="text-red-600">{role}</span>
-        </span>
+        <span className="text-red-600 font-bold">Dashboard</span> —{" "}
+        <span className="text-red-600">{role}</span>
       </Link>
 
       {/* COMMON MENU */}
