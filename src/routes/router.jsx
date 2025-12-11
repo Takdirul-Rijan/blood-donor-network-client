@@ -25,6 +25,7 @@ import VolunteerDonationRequests from "../pages/Dashboard/Volunteer/VolunteerDon
 import SearchDonors from "../pages/SearchDonors/SearchDonors";
 import CreateDonationRequest from "../pages/Dashboard/Donor/CreateDonationRequest";
 import DonationRequests from "../pages/DonationRequests/DonationRequests";
+import DonationRequestDetails from "../pages/DonationRequestDetails/DonationRequestDetails";
 
 export const router = createBrowserRouter([
   {
@@ -44,6 +45,17 @@ export const router = createBrowserRouter([
         path: "donation-requests",
         element: <DonationRequests></DonationRequests>,
       },
+      {
+        path: "donation-request/:id",
+        element: (
+          <PrivateRoute>
+            <DonationRequestDetails></DonationRequestDetails>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_API_URL}/requests/${params.id}`),
+      },
+
       {
         path: "contact-us",
         element: <ContactSection></ContactSection>,
