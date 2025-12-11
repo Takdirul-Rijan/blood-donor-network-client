@@ -111,7 +111,8 @@ const AllDonationRequests = () => {
               <th className="p-2 border">Date</th>
               <th className="p-2 border">Time</th>
               <th className="p-2 border">Blood Group</th>
-              <th className="p-2 border">Requested By</th>
+              <th className="p-2 border">Donor Name</th>
+              <th className="p-2 border">Donor Email</th>
               <th className="p-2 border">Status</th>
               <th className="p-2 border">Actions</th>
             </tr>
@@ -120,7 +121,7 @@ const AllDonationRequests = () => {
           <tbody>
             {requests.length === 0 && (
               <tr>
-                <td colSpan={8} className="p-6 text-center">
+                <td colSpan={9} className="p-6 text-center">
                   No donation requests found.
                 </td>
               </tr>
@@ -133,50 +134,72 @@ const AllDonationRequests = () => {
                 <td className="border p-2">{req.donationDate}</td>
                 <td className="border p-2">{req.donationTime}</td>
                 <td className="border p-2">{req.bloodGroup}</td>
-                <td className="border p-2">{req.requesterEmail}</td>
+                <td className="border p-2">
+                  {req.donationStatus === "inprogress" ? req.donorName : "-"}
+                </td>
+                <td className="border p-2">
+                  {req.donationStatus === "inprogress"
+                    ? req.requesterEmail
+                    : "-"}
+                </td>
                 <td className="border p-2 font-semibold">
                   {req.donationStatus}
                 </td>
 
-                <td className="border p-2 space-x-2">
-                  <Link
-                    to={`/dashboard/edit-request/${req._id}`}
-                    className="px-3 py-1 bg-blue-500 text-white rounded"
-                  >
-                    Edit
-                  </Link>
+                <td className="border p-2">
+                  <div className="flex flex-wrap justify-center gap-2">
+                    <Link
+                      to={`/dashboard/edit-request/${req._id}`}
+                      className="px-3 py-1 bg-blue-500 text-white rounded w-24 text-center"
+                    >
+                      Edit
+                    </Link>
 
-                  <Link
-                    to={`/dashboard/request/${req._id}`}
-                    className="px-3 py-1 bg-green-600 text-white rounded"
-                  >
-                    View
-                  </Link>
+                    <Link
+                      to={`/dashboard/request/${req._id}`}
+                      className="px-3 py-1 bg-green-600 text-white rounded w-24 text-center"
+                    >
+                      View
+                    </Link>
 
-                  <button
-                    onClick={() => handleDelete(req._id)}
-                    className="px-3 py-1 mt-2 bg-red-600 text-white rounded"
-                  >
-                    Delete
-                  </button>
+                    <button
+                      onClick={() => handleDelete(req._id)}
+                      className="px-3 py-1 bg-red-600 text-white rounded w-24"
+                    >
+                      Delete
+                    </button>
 
-                  {req.donationStatus === "inprogress" && (
-                    <>
+                    {req.donationStatus === "pending" && (
                       <button
-                        onClick={() => handleStatusChange(req._id, "done")}
-                        className="px-3 py-1 bg-purple-600 text-white rounded"
+                        onClick={() =>
+                          handleStatusChange(req._id, "inprogress")
+                        }
+                        className="px-3 py-1 bg-yellow-500 text-white rounded w-24"
                       >
-                        Done
+                        Start
                       </button>
+                    )}
 
-                      <button
-                        onClick={() => handleStatusChange(req._id, "canceled")}
-                        className="px-3 py-1 bg-black text-white rounded"
-                      >
-                        Cancel
-                      </button>
-                    </>
-                  )}
+                    {req.donationStatus === "inprogress" && (
+                      <>
+                        <button
+                          onClick={() => handleStatusChange(req._id, "done")}
+                          className="px-3 py-1 bg-purple-600 text-white rounded w-24"
+                        >
+                          Done
+                        </button>
+
+                        <button
+                          onClick={() =>
+                            handleStatusChange(req._id, "canceled")
+                          }
+                          className="px-3 py-1 bg-black text-white rounded w-24"
+                        >
+                          Cancel
+                        </button>
+                      </>
+                    )}
+                  </div>
                 </td>
               </tr>
             ))}
