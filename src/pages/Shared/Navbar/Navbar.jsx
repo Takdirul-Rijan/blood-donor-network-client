@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import Logo from "../../../components/Logo/Logo";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
@@ -10,6 +10,7 @@ import { useQuery } from "@tanstack/react-query";
 const Navbar = () => {
   const { user, logOut, loading } = useAuth();
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
 
   const { data: dbUser } = useQuery({
     queryKey: ["dbUser", user?.email],
@@ -30,6 +31,7 @@ const Navbar = () => {
           timer: 2500,
           showConfirmButton: false,
         });
+        navigate("/login");
       })
       .catch((error) => {});
   };
@@ -81,21 +83,6 @@ const Navbar = () => {
           Search Donors
         </NavLink>
       </li>
-
-      {user && (
-        <li className="font-medium">
-          <NavLink
-            to="/dashboard/create-donation-request"
-            className={({ isActive }) =>
-              isActive
-                ? "bg-red-600 text-white font-bold py-2 px-6 rounded-lg "
-                : ""
-            }
-          >
-            Create Donation Request
-          </NavLink>
-        </li>
-      )}
 
       {user && (
         <li className="font-medium">

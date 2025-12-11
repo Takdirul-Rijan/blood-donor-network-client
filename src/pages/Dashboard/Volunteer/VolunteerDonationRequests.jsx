@@ -1,18 +1,17 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import { ScaleLoader } from "react-spinners";
-import { Link } from "react-router";
 
-const AllDonationRequests = () => {
+const VolunteerDonationRequests = () => {
   const axiosSecure = useAxiosSecure();
 
   const [page, setPage] = useState(1);
   const [limit] = useState(10);
   const [statusFilter, setStatusFilter] = useState("");
 
-  const queryKey = ["allRequests", page, limit, statusFilter];
+  const queryKey = ["volunteerRequests", page, limit, statusFilter];
 
   const { data, isLoading, refetch } = useQuery({
     queryKey,
@@ -20,11 +19,15 @@ const AllDonationRequests = () => {
       const params = new URLSearchParams();
       params.append("page", page);
       params.append("limit", limit);
-      if (statusFilter) params.append("status", statusFilter);
+
+      if (statusFilter !== "") {
+        params.append("status", statusFilter); // FIXED
+      }
 
       const res = await axiosSecure.get(
         `/admin/requests/all?${params.toString()}`
       );
+
       return res.data;
     },
     keepPreviousData: true,
@@ -34,26 +37,7 @@ const AllDonationRequests = () => {
   const total = data?.total || 0;
   const totalPages = Math.max(1, Math.ceil(total / limit));
 
-  const handleDelete = async (id) => {
-    const confirm = await Swal.fire({
-      title: "Are you sure?",
-      text: "This request will be deleted!",
-      icon: "warning",
-      showCancelButton: true,
-    });
-
-    if (!confirm.isConfirmed) return;
-
-    try {
-      await axiosSecure.delete(`/requests/${id}`);
-      Swal.fire("Deleted!", "", "success");
-      if (requests.length === 1 && page > 1) setPage((p) => p - 1);
-      else refetch();
-    } catch (err) {
-      Swal.fire("Error!", "Failed to delete request", "error");
-    }
-  };
-
+  // Update status
   const handleStatusChange = async (id, newStatus) => {
     try {
       await axiosSecure.patch(`/requests/status/${id}`, { status: newStatus });
@@ -76,6 +60,7 @@ const AllDonationRequests = () => {
     <div className="p-6">
       <h1 className="text-3xl font-bold mb-6">All Donation Requests</h1>
 
+      {/* Filter */}
       <div className="mb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div className="flex items-center gap-3">
           <label className="font-semibold">Filter status:</label>
@@ -95,13 +80,12 @@ const AllDonationRequests = () => {
           </select>
         </div>
 
-        <div className="flex items-center gap-3">
-          <span className="text-sm text-gray-600">
-            Showing page {page} of {totalPages} — {total} requests
-          </span>
-        </div>
+        <span className="text-sm text-gray-600">
+          Showing page {page} of {totalPages} — {total} requests
+        </span>
       </div>
 
+      {/* Table */}
       <div className="overflow-x-auto">
         <table className="table-auto w-full border">
           <thead>
@@ -111,8 +95,6 @@ const AllDonationRequests = () => {
               <th className="p-2 border">Date</th>
               <th className="p-2 border">Time</th>
               <th className="p-2 border">Blood Group</th>
-              <th className="p-2 border">Donor Name</th>
-              <th className="p-2 border">Donor Email</th>
               <th className="p-2 border">Status</th>
               <th className="p-2 border">Actions</th>
             </tr>
@@ -121,7 +103,7 @@ const AllDonationRequests = () => {
           <tbody>
             {requests.length === 0 && (
               <tr>
-                <td colSpan={9} className="p-6 text-center">
+                <td colSpan={7} className="p-6 text-center">
                   No donation requests found.
                 </td>
               </tr>
@@ -134,44 +116,13 @@ const AllDonationRequests = () => {
                 <td className="border p-2">{req.donationDate}</td>
                 <td className="border p-2">{req.donationTime}</td>
                 <td className="border p-2">{req.bloodGroup}</td>
-                <td className="border p-2">
-                  {req.donationStatus === "inprogress"
-                    ? req.requesterName
-                    : "-"}
-                </td>
 
-                <td className="border p-2">
-                  {req.donationStatus === "inprogress"
-                    ? req.requesterEmail
-                    : "-"}
-                </td>
                 <td className="border p-2 font-semibold">
                   {req.donationStatus}
                 </td>
 
                 <td className="border p-2">
                   <div className="flex flex-wrap justify-center gap-2">
-                    <Link
-                      to={`/dashboard/edit-request/${req._id}`}
-                      className="px-3 py-1 bg-blue-500 text-white rounded w-24 text-center"
-                    >
-                      Edit
-                    </Link>
-
-                    <Link
-                      to={`/dashboard/request/${req._id}`}
-                      className="px-3 py-1 bg-green-600 text-white rounded w-24 text-center"
-                    >
-                      View
-                    </Link>
-
-                    <button
-                      onClick={() => handleDelete(req._id)}
-                      className="px-3 py-1 bg-red-600 text-white rounded w-24"
-                    >
-                      Delete
-                    </button>
-
                     {req.donationStatus === "pending" && (
                       <button
                         onClick={() =>
@@ -210,6 +161,7 @@ const AllDonationRequests = () => {
         </table>
       </div>
 
+      {/* Pagination */}
       <div className="mt-4 flex items-center justify-center gap-2">
         <button
           onClick={() => setPage((p) => Math.max(1, p - 1))}
@@ -246,4 +198,4 @@ const AllDonationRequests = () => {
   );
 };
 
-export default AllDonationRequests;
+export default VolunteerDonationRequests;

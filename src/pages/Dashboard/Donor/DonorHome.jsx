@@ -125,7 +125,7 @@ const DonorHome = () => {
                         <>
                           <button
                             onClick={() => handleStatusChange(req._id, "done")}
-                            className="px-3 py-1 bg-purple-600 text-white rounded"
+                            className="px-3 py-1 mt-2 bg-purple-600 text-white rounded"
                           >
                             Done
                           </button>
@@ -134,7 +134,7 @@ const DonorHome = () => {
                             onClick={() =>
                               handleStatusChange(req._id, "canceled")
                             }
-                            className="px-3 py-1 bg-black text-white rounded"
+                            className="px-3 py-1 bg-black text-white rounded mt-2"
                           >
                             Cancel
                           </button>

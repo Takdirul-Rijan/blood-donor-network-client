@@ -16,7 +16,7 @@ const DashboardRedirect = () => {
   if (role === "volunteer")
     return <Navigate to="/dashboard/volunteer" replace />;
 
-  return <Navigate to="/login" replace />;
+  return <Navigate to="/dashboard" replace />;
 };
 
 export default DashboardRedirect;

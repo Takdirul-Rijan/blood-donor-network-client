@@ -129,9 +129,9 @@ const DashboardSidebar = () => {
               Volunteer Home
             </NavLink>
           </li>
-          <li>
+          <li className="mt-2">
             <NavLink
-              to="/dashboard/all-donations"
+              to="/dashboard/volunteer-requests"
               className={({ isActive }) =>
                 isActive ? "bg-amber-600 text-white font-bold rounded-lg " : ""
               }
