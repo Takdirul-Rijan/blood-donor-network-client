@@ -56,7 +56,7 @@ const Banner = () => {
               whileTap={{ scale: 0.95 }}
               className="px-8 py-3 border border-white text-white font-semibold rounded-lg hover:bg-white hover:text-red-600 transition"
             >
-              Search Donors
+              <Link to={"/search"}>Search Donors</Link>
             </motion.button>
           </motion.div>
         </motion.div>

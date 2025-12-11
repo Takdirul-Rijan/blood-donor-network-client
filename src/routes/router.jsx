@@ -24,6 +24,7 @@ import AllDonationRequests from "../pages/Dashboard/Admin/AllDonationRequests";
 import VolunteerDonationRequests from "../pages/Dashboard/Volunteer/VolunteerDonationRequests";
 import SearchDonors from "../pages/SearchDonors/SearchDonors";
 import CreateDonationRequest from "../pages/Dashboard/Donor/CreateDonationRequest";
+import DonationRequests from "../pages/DonationRequests/DonationRequests";
 
 export const router = createBrowserRouter([
   {
@@ -39,7 +40,10 @@ export const router = createBrowserRouter([
         element: <SearchDonors></SearchDonors>,
         loader: () => fetch("/districtsUpazilas.json"),
       },
-      { path: "donation-requests", element: <h2>DonationRequests</h2> },
+      {
+        path: "donation-requests",
+        element: <DonationRequests></DonationRequests>,
+      },
       {
         path: "contact-us",
         element: <ContactSection></ContactSection>,

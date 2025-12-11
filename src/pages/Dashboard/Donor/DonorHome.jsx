@@ -116,7 +116,7 @@ const DonorHome = () => {
                             refetch();
                           }
                         }}
-                        className="px-3 py-1  mt-2 sm:mt-0 bg-red-600 text-white rounded"
+                        className="px-3 py-1  mt-2 bg-red-600 text-white rounded"
                       >
                         Delete
                       </button>
