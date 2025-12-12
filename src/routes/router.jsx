@@ -29,6 +29,7 @@ import DonationRequestDetails from "../pages/DonationRequestDetails/DonationRequ
 import FundingPage from "../pages/Funding/FundingPage";
 import PaymentSuccess from "../pages/Funding/PaymentSuccess";
 import PaymentCancelled from "../pages/Funding/PaymentCancelled";
+import AboutUs from "../pages/Home/AboutUs/AboutUs";
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +39,14 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "contact-us",
+        element: <ContactSection></ContactSection>,
+      },
+      {
+        path: "about-us",
+        element: <AboutUs></AboutUs>,
       },
       {
         path: "search",
@@ -73,11 +82,6 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/payment-cancelled",
         element: <PaymentCancelled></PaymentCancelled>,
-      },
-
-      {
-        path: "contact-us",
-        element: <ContactSection></ContactSection>,
       },
 
       {

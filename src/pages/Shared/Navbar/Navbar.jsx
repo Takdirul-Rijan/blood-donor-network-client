@@ -101,7 +101,7 @@ const Navbar = () => {
 
       <li className="font-medium">
         <NavLink
-          to="/about"
+          to="/about-us"
           className={({ isActive }) =>
             isActive
               ? "bg-red-600 text-white font-bold py-2 px-6 rounded-lg "
