@@ -51,7 +51,7 @@ const AdminHome = () => {
 
       {/* Featured Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-5">
-        <div className="bg-white shadow-lg rounded-lg p-6 flex items-center gap-4">
+        <div className="bg-lime-300 shadow-lg rounded-lg p-6 flex items-center gap-4">
           <FaUsers className="text-4xl text-blue-500" />
           <div>
             <h2 className="text-2xl font-bold">{stats.totalUsers || 0}</h2>
@@ -59,7 +59,7 @@ const AdminHome = () => {
           </div>
         </div>
 
-        <div className="bg-white shadow-lg rounded-lg p-6 flex items-center gap-4">
+        <div className="bg-lime-300 shadow-lg rounded-lg p-6 flex items-center gap-4">
           <FaDonate className="text-4xl text-green-500" />
           <div>
             <h2 className="text-2xl font-bold">{stats.totalFunding || 0}</h2>
@@ -67,7 +67,7 @@ const AdminHome = () => {
           </div>
         </div>
 
-        <div className="bg-white shadow-lg rounded-lg p-6 flex items-center gap-4">
+        <div className="bg-lime-300 shadow-lg rounded-lg p-6 flex items-center gap-4">
           <FaTint className="text-4xl text-red-500" />
           <div>
             <h2 className="text-2xl font-bold">{stats.totalRequests || 0}</h2>

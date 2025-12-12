@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { Link } from "react-router";
 import { ScaleLoader } from "react-spinners";
+
 const DonationRequests = () => {
   const axiosSecure = useAxiosSecure();
   const [requests, setRequests] = useState([]);
@@ -42,31 +43,36 @@ const DonationRequests = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {requests.map((req) => (
-          <div key={req._id} className=" p-4 rounded shadow bg-lime-50">
-            <h2 className="text-xl font-bold">{req.recipientName}</h2>
+          <div
+            key={req._id}
+            className="p-4 rounded shadow bg-lime-50 flex flex-col justify-between h-full"
+          >
+            <div>
+              <h2 className="text-xl font-bold">{req.recipientName}</h2>
 
-            <p className="text-sm mt-2">
-              <strong>Location:</strong> {req.recipientLocation}
-            </p>
+              <p className="text-sm mt-2">
+                <strong>Location:</strong> {req.recipientLocation}
+              </p>
 
-            <p className="text-sm">
-              <strong>Blood Group:</strong>{" "}
-              <span className="text-red-600 font-semibold">
-                {req.bloodGroup}
-              </span>
-            </p>
+              <p className="text-sm">
+                <strong>Blood Group:</strong>{" "}
+                <span className="text-red-600 font-semibold">
+                  {req.bloodGroup}
+                </span>
+              </p>
 
-            <p className="text-sm">
-              <strong>Date:</strong> {req.donationDate}
-            </p>
+              <p className="text-sm">
+                <strong>Date:</strong> {req.donationDate}
+              </p>
 
-            <p className="text-sm">
-              <strong>Time:</strong> {req.donationTime || "Not Provided"}
-            </p>
-
+              <p className="text-sm">
+                <strong>Time:</strong> {req.donationTime || "Not Provided"}
+              </p>
+            </div>
+            {/* View button */}
             <Link
               to={`/donation-request/${req._id}`}
-              className="inline-block mt-4 bg-red-600 text-white px-4 py-2 rounded font-semibold"
+              className="inline-block mt-4 bg-red-600 text-white px-4 py-2 rounded font-semibold self-start"
             >
               View
             </Link>

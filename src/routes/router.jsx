@@ -26,6 +26,9 @@ import SearchDonors from "../pages/SearchDonors/SearchDonors";
 import CreateDonationRequest from "../pages/Dashboard/Donor/CreateDonationRequest";
 import DonationRequests from "../pages/DonationRequests/DonationRequests";
 import DonationRequestDetails from "../pages/DonationRequestDetails/DonationRequestDetails";
+import FundingPage from "../pages/Funding/FundingPage";
+import PaymentSuccess from "../pages/Funding/PaymentSuccess";
+import PaymentCancelled from "../pages/Funding/PaymentCancelled";
 
 export const router = createBrowserRouter([
   {
@@ -54,6 +57,22 @@ export const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_API_URL}/requests/${params.id}`),
+      },
+      {
+        path: "funding",
+        element: (
+          <PrivateRoute>
+            <FundingPage></FundingPage>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/payment-success",
+        element: <PaymentSuccess></PaymentSuccess>,
+      },
+      {
+        path: "/dashboard/payment-cancelled",
+        element: <PaymentCancelled></PaymentCancelled>,
       },
 
       {
