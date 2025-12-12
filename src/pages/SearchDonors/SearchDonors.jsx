@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import { useLoaderData } from "react-router";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import { Link, useLoaderData } from "react-router";
+import { useState } from "react";
 import Swal from "sweetalert2";
+import jsPDF from "jspdf";
 
 const SearchDonors = () => {
   const axiosSecure = useAxiosSecure();
@@ -16,20 +17,24 @@ const SearchDonors = () => {
   const selectedDistrict = geoData.find((item) => item.district === district);
 
   const handleSearch = async () => {
-    if (!bloodGroup || !district || !upazila) {
+    if (!bloodGroup && !district && !upazila) {
       Swal.fire({
         icon: "warning",
         title: "Oops...",
-        text: "Please select all fields!",
+        text: "Please select at least one field to search!",
         confirmButtonText: "OK",
       });
       return;
     }
 
     try {
-      const res = await axiosSecure.get("/donors/search", {
-        params: { bloodGroup, district, upazila },
-      });
+      const params = {
+        bloodGroup: bloodGroup || undefined,
+        district: district || undefined,
+        upazila: upazila || undefined,
+      };
+
+      const res = await axiosSecure.get("/donors/search", { params });
 
       setDonors(res.data);
       setSearched(true);
@@ -42,6 +47,41 @@ const SearchDonors = () => {
         confirmButtonText: "Try Again",
       });
     }
+  };
+
+  const handleDownloadPDF = () => {
+    if (donors.length === 0) {
+      Swal.fire({
+        icon: "info",
+        title: "No data",
+        text: "There are no donors to download.",
+        confirmButtonText: "OK",
+      });
+      return;
+    }
+
+    const doc = new jsPDF();
+    doc.setFontSize(16);
+    doc.text("Donor List", 105, 20, null, null, "center");
+
+    let y = 30;
+
+    donors.forEach((donor, index) => {
+      doc.setFontSize(12);
+      doc.text(`Name: ${donor.name}`, 20, y);
+      doc.text(`Email: ${donor.email}`, 20, y + 6);
+      doc.text(`Blood Group: ${donor.bloodGroup}`, 20, y + 12);
+      doc.text(`District: ${donor.district}`, 20, y + 18);
+      doc.text(`Upazila: ${donor.upazila}`, 20, y + 24);
+      y += 36;
+
+      if (y > 270) {
+        doc.addPage();
+        y = 20;
+      }
+    });
+
+    doc.save("donors.pdf");
   };
 
   return (
@@ -107,10 +147,21 @@ const SearchDonors = () => {
         </button>
       </div>
 
+      {donors.length > 0 && (
+        <div className="text-right mt-4">
+          <button
+            onClick={handleDownloadPDF}
+            className="bg-green-600 text-white rounded p-2 font-semibold"
+          >
+            Download PDF
+          </button>
+        </div>
+      )}
+
       <div className="mt-8">
         {!searched && (
           <p className="text-center text-gray-500">
-            Fill the form and click search to view donors.
+            Fill one or more fields and click search to view donors.
           </p>
         )}
 

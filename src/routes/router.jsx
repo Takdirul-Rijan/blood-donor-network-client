@@ -30,6 +30,7 @@ import FundingPage from "../pages/Funding/FundingPage";
 import PaymentSuccess from "../pages/Funding/PaymentSuccess";
 import PaymentCancelled from "../pages/Funding/PaymentCancelled";
 import AboutUs from "../pages/Home/AboutUs/AboutUs";
+import ErrorPage from "../pages/Error/ErrorPage";
 
 export const router = createBrowserRouter([
   {
@@ -203,5 +204,9 @@ export const router = createBrowserRouter([
         ),
       },
     ],
+  },
+  {
+    path: "/*",
+    element: <ErrorPage></ErrorPage>,
   },
 ]);
