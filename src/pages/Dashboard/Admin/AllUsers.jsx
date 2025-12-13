@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import { FaEllipsisV } from "react-icons/fa";
+import { ScaleLoader } from "react-spinners";
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
@@ -58,7 +59,12 @@ const AllUsers = () => {
     }
   };
 
-  if (isLoading) return <div className="text-center mt-10">Loading...</div>;
+  if (isLoading)
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <ScaleLoader color="#e63946" />
+      </div>
+    );
 
   return (
     <div className="p-6">

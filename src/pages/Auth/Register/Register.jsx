@@ -62,7 +62,10 @@ const Register = () => {
                   password: data.password,
                 };
 
-                axios.post("http://localhost:3000/users/register", newUser);
+                axios.post(
+                  "https://blood-donor-network-server.vercel.app/users/register",
+                  newUser
+                );
 
                 navigate(location.state || "/");
               })

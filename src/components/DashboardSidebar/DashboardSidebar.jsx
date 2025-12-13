@@ -105,7 +105,7 @@ const DashboardSidebar = () => {
           </li>
           <li>
             <NavLink
-              to="/dashboard/funding"
+              to="/funding"
               className={({ isActive }) =>
                 isActive ? "bg-amber-600 text-white font-bold rounded-lg " : ""
               }

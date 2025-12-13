@@ -20,11 +20,6 @@ const CreateDonationRequest = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (user?.status === "blocked") {
-      Swal.fire("Blocked!", "You are not allowed to create requests.", "error");
-      return;
-    }
-
     const form = e.target;
 
     const requestData = {
@@ -43,21 +38,31 @@ const CreateDonationRequest = () => {
       neededTime: form.neededTime.value,
 
       reason: form.reason.value,
-
       phone: form.phone.value,
 
       status: "pending",
       createdAt: new Date(),
     };
 
-    const res = await axiosSecure.post("/requests", requestData);
+    try {
+      const res = await axiosSecure.post("/requests", requestData);
 
-    if (res.data.success) {
-      Swal.fire("Success!", "Donation request created!", "success");
-      form.reset();
-      setUpazilas([]);
-      navigate("/dashboard");
-    } else {
+      if (res.data.success) {
+        Swal.fire("Success!", "Donation request created!", "success");
+        form.reset();
+        setUpazilas([]);
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      if (error.response?.status === 403) {
+        Swal.fire(
+          "Blocked!",
+          "You are not allowed to create donation requests.",
+          "error"
+        );
+        return;
+      }
+
       Swal.fire("Error", "Something went wrong", "error");
     }
   };
