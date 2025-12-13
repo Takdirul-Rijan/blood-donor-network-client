@@ -59,8 +59,10 @@ BloodConnect aims to simplify and digitalize blood donation activities by:
 ### ✅ Public Features
 
 - Home page with banner, featured sections, and contact form
+- About Us section explaining the mission and purpose of BloodConnect
 - Search donors by blood group, district & upazila
 - View all pending blood donation requests
+
 - Responsive navbar & footer
 
 ### 🔒 Private Dashboard Features
