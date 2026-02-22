@@ -15,8 +15,17 @@ const Navbar = () => {
   const { data: dbUser } = useQuery({
     queryKey: ["dbUser", user?.email],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/users/${user?.email}`);
-      return res.data;
+      try {
+        const res = await axiosSecure.get(`/users/${user?.email}`);
+        return res.data;
+      } catch (err) {
+        console.log("User fetch failed:", err);
+
+        return {
+          name: user?.displayName || "Guest",
+          avatar: user?.photoURL || "",
+        };
+      }
     },
     enabled: !!user?.email,
   });
@@ -33,7 +42,9 @@ const Navbar = () => {
         });
         navigate("/login");
       })
-      .catch((error) => {});
+      .catch((error) => {
+        console.error("Logout failed:", error);
+      });
   };
 
   if (loading)
@@ -50,47 +61,44 @@ const Navbar = () => {
           to="/"
           className={({ isActive }) =>
             isActive
-              ? "bg-red-600 text-white font-bold py-2 px-6 rounded-lg "
+              ? "bg-red-600 text-white font-bold py-2 px-6 rounded-lg"
               : ""
           }
         >
           Home
         </NavLink>
       </li>
-
       <li className="font-medium">
         <NavLink
           to="/donation-requests"
           className={({ isActive }) =>
             isActive
-              ? "bg-red-600 text-white font-bold py-2 px-6 rounded-lg "
+              ? "bg-red-600 text-white font-bold py-2 px-6 rounded-lg"
               : ""
           }
         >
           Donation Requests
         </NavLink>
       </li>
-
       <li className="font-medium">
         <NavLink
           to="/search"
           className={({ isActive }) =>
             isActive
-              ? "bg-red-600 text-white font-bold py-2 px-6 rounded-lg "
+              ? "bg-red-600 text-white font-bold py-2 px-6 rounded-lg"
               : ""
           }
         >
           Search Donors
         </NavLink>
       </li>
-
       {user && (
         <li className="font-medium">
           <NavLink
             to="/funding"
             className={({ isActive }) =>
               isActive
-                ? "bg-red-600 text-white font-bold py-2 px-6 rounded-lg "
+                ? "bg-red-600 text-white font-bold py-2 px-6 rounded-lg"
                 : ""
             }
           >
@@ -98,26 +106,24 @@ const Navbar = () => {
           </NavLink>
         </li>
       )}
-
       <li className="font-medium">
         <NavLink
           to="/about-us"
           className={({ isActive }) =>
             isActive
-              ? "bg-red-600 text-white font-bold py-2 px-6 rounded-lg "
+              ? "bg-red-600 text-white font-bold py-2 px-6 rounded-lg"
               : ""
           }
         >
           About Us
         </NavLink>
       </li>
-
       <li className="font-medium">
         <NavLink
           to="/contact-us"
           className={({ isActive }) =>
             isActive
-              ? "bg-red-600 text-white font-bold py-2 px-6 rounded-lg "
+              ? "bg-red-600 text-white font-bold py-2 px-6 rounded-lg"
               : ""
           }
         >
@@ -147,7 +153,6 @@ const Navbar = () => {
               />
             </svg>
           </div>
-
           <ul
             tabIndex="-1"
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
@@ -185,7 +190,7 @@ const Navbar = () => {
              opacity-0 group-hover:opacity-100 transition-all duration-200 
              whitespace-nowrap"
             >
-              {dbUser?.name}
+              {dbUser?.name || user.displayName || "Guest"}
             </span>
 
             <ul
